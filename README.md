@@ -11,3 +11,7 @@ Visit Live Site: https://song-cloud-clone.herokuapp.com/
 1. Clone this repository
 
 `git clone https://github.com/scorrea310/soundcloud-clone.git`
+
+2. Install Dependancies with 
+
+`npm install`
