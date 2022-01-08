@@ -17,7 +17,7 @@ app.use(morgan('dev'));
 //makes parsing cookies easier
 app.use(cookieParser())
 
-
+app.use(express.urlencoded({ extended: false }));
 //parses json bodies of requests for us
 app.use(express.json())
 
