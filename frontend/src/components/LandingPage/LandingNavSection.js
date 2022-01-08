@@ -31,7 +31,7 @@ const LandingNavSection = () => {
                 </div>
                 <div id="landingNavLink">
                     <LoginFormModal />
-                    <NavLink to="/signup">Create Account</NavLink>
+                    <NavLink id="createAccountButton" to="/signup">Create Account</NavLink>
                     <button
                         id="demoUserButton"
                         onClick={login}>Demo User</button>
