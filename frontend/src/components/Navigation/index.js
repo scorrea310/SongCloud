@@ -34,11 +34,9 @@ function Navigation({ isLoaded }) {
     }
 
     return (
-        <ul>
-            <li>
-                {isLoaded && sessionLinks}
-            </li>
-        </ul>
+        <>
+            {isLoaded && sessionLinks}
+        </>
     );
 }
 
