@@ -1,0 +1,17 @@
+.signUpForm{ 
+    display: flex;
+    flex-direction: column;
+}
+
+.formItem { 
+     margin-top: 20px;
+    width: 300px;
+    height: 40px;
+}
+
+#signupButton {
+    background-color: rgb(255, 85, 0);
+    cursor: pointer;
+    border-color: rgb(255, 85, 0);
+    border-style: none;
+}
