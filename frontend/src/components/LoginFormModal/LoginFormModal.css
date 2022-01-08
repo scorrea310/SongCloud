@@ -1,3 +1,11 @@
 .loginButton { 
-    height: 40px;
+    height: 30px;
+    width: 80px;
+    background: none;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    color: #e5e5e5;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    font-size: 13px;
+    cursor: pointer;
 }
