@@ -1,4 +1,5 @@
 import LandingNavSection from "./LandingNavSection"
+import "./LandingPage.css"
 
 const LandingPage = () => {
 
@@ -11,9 +12,7 @@ const LandingPage = () => {
     6.Last, manually add JSX for footer and include login and Sing up buttons there. 
      */
     return (
-        <div>
-            Landing Page
-
+        <div className="LandingPage">
             <LandingNavSection />
         </div>
     )
