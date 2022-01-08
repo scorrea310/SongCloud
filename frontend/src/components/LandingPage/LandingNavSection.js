@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import "./LandingNavSection.css"
-
+import SignUpFormModal from "../SignUpformModal";
 
 const LandingNavSection = () => {
 
@@ -31,7 +31,7 @@ const LandingNavSection = () => {
                 </div>
                 <div id="landingNavLink">
                     <LoginFormModal />
-                    <NavLink id="createAccountButton" to="/signup">Create Account</NavLink>
+                    <SignUpFormModal />
                     <button
                         id="demoUserButton"
                         onClick={login}>Demo User</button>
