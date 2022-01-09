@@ -1,16 +1,15 @@
 import ProfileButton from "../Navigation/ProfileButton"
 import { NavLink } from "react-router-dom"
+import HomeNavBar from "../HomeNavBar"
 
 const HomePage = ({ user }) => {
 
     /*
-    show logout button as well.
+    display navBar components and other homePage components here
     */
     return (
-        <div>
-            <NavLink exact to="/">Home</NavLink>
-            <ProfileButton user={user} />
-        </div>
+            <HomeNavBar user={user} />
+        
     )
 }
 
