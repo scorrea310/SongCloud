@@ -26,5 +26,28 @@ module.exports = (sequelize, DataTypes) => {
     Song.belongsTo(models.User, { foreignKey: "userId" });
     Song.belongsTo(models.Album, { foreignKey: "albumId" });
   };
+
+
+
+  Song.create = async function ({ userId, albumId, url, title, imageUrl }) {
+    const song = await Song.create({
+      userId,
+      albumId,
+      url,
+      title,
+      imageUrl
+    })
+
+    return await Song.findByPk(song.id)
+  }
+
+
+
+
+
+
+
+
+
   return Song;
 };
