@@ -84,7 +84,7 @@ span {
     background-image: linear-gradient(135deg,#846170,#70929c);
 }
 
-form {
+.uploadSongForm{
     display: flex;
     flex-direction: column;
     align-items: center;
