@@ -1,7 +1,7 @@
 .landingNavSection {
     width: 1239px;
     height: 453px;
-    background-image: url("https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_a@2x-cc048a7f.jpg");
+    background-image: url("../../../public/images/soundcloud\ landing\ page\ image.jpeg");
     background-size:cover;
     display: flex;
     align-items: center;
@@ -23,6 +23,7 @@
     color: white;
     width: 90px;
 }
+
 
 .landingNavBar {
     width: 100%;
