@@ -8,7 +8,7 @@ const HomeNavBar = ({ user }) => {
             <div className="middleSectionNav">
                 <div id="leftNavSection">
                     <div id="navIcon">
-                        <i className="fab fa-soundcloud"></i>
+                        <i className="fab fa-soundcloud" id="homeIcon"></i>
                     </div>
                     <NavLink className="homeButton" exact to="/">Home</NavLink>
                 </div>
