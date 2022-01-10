@@ -17,7 +17,7 @@ const UpLoadSong = () => {
 
                 <div className="formContainer">
                     <div className="uploadText">Upload a Song</div>
-                    <form>
+                    <form className="uploadSongForm">
                         <div className="imageBox">
                             <span>Image</span>
                             <input className="imageInput" type="file" />
