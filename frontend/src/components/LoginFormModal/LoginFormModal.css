@@ -1,0 +1,37 @@
+.loginButton { 
+    height: 30px;
+    width: 80px;
+    background: none;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    color: #e5e5e5;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.formItem {
+    margin-top: 20px;
+    width: 300px;
+    height: 40px;
+}
+
+#loginButton2 { 
+    background-color: rgb(255, 85, 0);
+    cursor: pointer;
+    border-color: rgb(255, 85, 0);
+    border-style: none;
+}
+
+p {
+   font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif; 
+   font-size: 18px;
+
+}

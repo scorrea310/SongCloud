@@ -1,0 +1,39 @@
+.profileButton {
+     background: none;
+     border: none;
+}
+
+.fas {
+    font-size: 28px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.profile-dropdown{
+    background-color:#fff;
+    width: 125px;
+    height: 150px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: -14px;
+    margin-right: 100px;
+    border: 1px solid #ccc;
+    z-index: 300;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+ul {
+    width: 100%;
+    height: 100%;
+    padding-left: 0px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
