@@ -21,6 +21,7 @@
     margin-top: -14px;
     margin-right: 100px;
     border: 1px solid #ccc;
+    z-index: 300;
 }
 
 ul li {

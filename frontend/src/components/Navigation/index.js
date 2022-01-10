@@ -23,8 +23,9 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
- 
+            <>
                 <HomePage user={sessionUser} />
+            </>
         );
     } else {
         sessionLinks = (
