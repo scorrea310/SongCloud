@@ -30,15 +30,23 @@ module.exports = (sequelize, DataTypes) => {
 
 
   Song.create = async function ({ userId, albumId, url, title, imageUrl }) {
-    const song = await Song.create({
-      userId,
-      albumId,
+
+    const song = await Song.build({
+      userId: +userId,
+      albumId: null,
       url,
       title,
       imageUrl
     })
 
-    return await Song.findByPk(song.id)
+
+
+    const newSong = await song.save()
+
+
+    console.log("++++++++++", newSong.dataValues)
+
+    return newSong.dataValues
   }
 
 

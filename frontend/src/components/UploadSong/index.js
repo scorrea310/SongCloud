@@ -1,6 +1,7 @@
 import "./UploadSong.css"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { createSong } from "../../store/songs";
 
 const UpLoadSong = () => {
 
@@ -12,16 +13,37 @@ const UpLoadSong = () => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
 
-    const handleSubmit = (e) => {
+    let userId = user.id
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let newErrors = [];
 
-        /*
+        const songInfo = {
+            userId,
+            albumId: null,
+            title,
+            image,
+            song,
+        }
 
+        let newSong = await dispatch(createSong(songInfo))
+
+        if (newSong) {
+            setTitle("")
+            setImage(null)
+            setSong(null)
+
+            console.log(newSong)
+        }
+
+
+        /*
+    
         TODO: 
         1. Create song reducer, thunk, and action creator. 
         2. dispatch create song action to song reducer.
-
+    
         */
 
     };
@@ -44,20 +66,27 @@ const UpLoadSong = () => {
             <div className="formSection">
 
                 <div className="formContainer">
+                    {errors.length > 0 &&
+                        errors.map((error) => <div key={error}>{error}</div>)}
                     <div className="uploadText">Upload a Song</div>
-                    <form className="uploadSongForm">
+                    <form
+                        className="uploadSongForm"
+                        onSubmit={handleSubmit}
+                    >
                         <div className="imageBox">
                             <span>Image</span>
                             <input className="imageInput" type="file" onChange={addImage} />
                         </div>
                         <div className="songAndTitleContainer">
                             <label id="title">Title
-                                <input className="titleInput" type="text" />
+                                <input value={title} className="titleInput" type="text" onChange={(e) => setTitle(e.target.value)} />
                             </label>
                             <label>Song file:
                                 <input className="songInput" type="file" onChange={addSong} />
                             </label>
                         </div>
+
+                        <button type="submit">Upload Song</button>
                     </form>
                 </div>
             </div>
