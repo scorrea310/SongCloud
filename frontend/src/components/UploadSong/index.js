@@ -3,22 +3,34 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createSong } from "../../store/songs";
 import { allSongsDelete } from "../../store/songs";
+import { useHistory } from "react-router-dom";
 
 const UpLoadSong = () => {
+
+    const history = useHistory()
 
     const [title, setTitle] = useState("");
     const [image, setImage] = useState(null)
     const [song, setSong] = useState(null)
     const [errors, setErrors] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false)
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
 
     let userId = user.id
 
+    let loadingIconAndText = (
+        <>
+            <div>Loading...</div>
+            <div className="loading"></div>
+        </>
+    )
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoaded(true)
         let newErrors = [];
 
         const songInfo = {
@@ -37,16 +49,8 @@ const UpLoadSong = () => {
             setSong(null)
 
             console.log(newSong)
+            history.push("/mysongs")
         }
-
-
-        /*
-    
-        TODO: 
-        1. Create song reducer, thunk, and action creator. 
-        2. dispatch create song action to song reducer.
-    
-        */
 
     };
 
@@ -87,8 +91,11 @@ const UpLoadSong = () => {
                                 <input className="songInput" type="file" onChange={addSong} />
                             </label>
                         </div>
+                        <div className="uploadButtonAndLoadingIcon">
+                            {isLoaded ? loadingIconAndText : null}
 
-                        <button type="submit">Upload Song</button>
+                            <button id="uploadSongButton" type="submit">Upload Song</button>
+                        </div>
                     </form>
                 </div>
             </div>

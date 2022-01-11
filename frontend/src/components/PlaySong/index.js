@@ -1,5 +1,6 @@
 import ReactPlayer from 'react-player'
 import "./PlaySong.css"
+import EditSongFormModal from '../EditSongModal'
 
 const PlaySong = ({ song }) => {
 
@@ -10,18 +11,19 @@ const PlaySong = ({ song }) => {
     */
 
     return (
-        <div className='SongContainer'>
-            <div id="editButtonContainer">
-                <button className='editSongButton'>edit</button>
+        
+            <div className='SongContainer'>
+                <div id="editButtonContainer">
+                    <EditSongFormModal song={song} />
+                </div>
+                <div className='songTitle'> {song.title}</div>
+                <div className='songImage'>
+                    <img className='songImagePic' src={`${song.imageUrl}`}></img>
+                </div>
+                <div className='audioContainer'>
+                    <audio src={`${song.url}`} preload="auto" controls className='audioElement'></audio>
+                </div>
             </div>
-            <div className='songTitle'> {song.title}</div>
-            <div className='songImage'>
-                <img className='songImagePic' src={`${song.imageUrl}`}></img>
-            </div>
-            <div className='audioContainer'>
-                <audio src={`${song.url}`} preload="auto" controls className='audioElement'></audio>
-            </div>
-        </div>
     )
 }
 
