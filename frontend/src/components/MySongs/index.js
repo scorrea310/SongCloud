@@ -1,5 +1,8 @@
 import PlaySong from "../PlaySong";
-
+import "./MySongs.css"
+import {
+    useSelector
+} from "react-redux";
 const MySongs = () => {
 
     /*
@@ -8,9 +11,26 @@ const MySongs = () => {
     
     */
 
+    const songs = useSelector(state => state.songs);
 
-    return (<div style={{ width: "400px", height: '500px' }}>
-        <PlaySong />
+    console.log(songs);
+
+
+    let valueArray = Object.values(songs);
+
+    console.log("=========", valueArray);
+
+    let areThereSongs;
+
+    if (valueArray.length === 0) {
+        areThereSongs = false
+    } else {
+        areThereSongs = true
+    }
+
+
+    return (<div className="songItemsContainer">
+        {areThereSongs ? valueArray.map((song) => <PlaySong key={song.url} song={song} />) : <h1> No Songs to Display</h1>}
     </div>)
 }
 

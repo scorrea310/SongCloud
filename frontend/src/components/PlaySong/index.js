@@ -1,7 +1,7 @@
 import ReactPlayer from 'react-player'
 import "./PlaySong.css"
 
-const PlaySong = () => {
+const PlaySong = ({ song }) => {
 
     /*
     1. take in a song as a prop. destructure
@@ -14,9 +14,12 @@ const PlaySong = () => {
             <div id="editButtonContainer">
                 <button className='editSongButton'>edit</button>
             </div>
-            <div className='songImage'>image</div>
+            <div className='songTitle'> {song.title}</div>
+            <div className='songImage'>
+                <img className='songImagePic' src={`${song.imageUrl}`}></img>
+            </div>
             <div className='audioContainer'>
-                <audio src="https://songcloud-song-images.s3.us-west-1.amazonaws.com/1641842329307.mp3" preload="auto" controls className='audioElement'></audio>
+                <audio src={`${song.url}`} preload="auto" controls className='audioElement'></audio>
             </div>
         </div>
     )

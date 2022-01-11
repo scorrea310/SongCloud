@@ -2,6 +2,7 @@ import "./UploadSong.css"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createSong } from "../../store/songs";
+import { allSongsDelete } from "../../store/songs";
 
 const UpLoadSong = () => {
 
@@ -14,6 +15,7 @@ const UpLoadSong = () => {
     const user = useSelector((state) => state.session.user);
 
     let userId = user.id
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
