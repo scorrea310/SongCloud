@@ -1,0 +1,82 @@
+#modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#EditFormContent {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:white;
+  height: 400px;
+  width: 400px;
+}
+
+.editSongButton { 
+    width: 80px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: none;
+    border: 1px solid #f50;
+    border-radius: 3px;
+    color: #f50;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 15px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 10px;
+    height: 30px;
+}
+
+.editSongForm {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.newImage {
+  height:200px;
+  width: 200px;
+  background-image: linear-gradient(135deg,#846170,#70929c);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#editSongText {
+  width: 100%;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+}
+
+.editSongAndTitleContainer {
+   display: flex;
+    flex-direction: column;
+    height: 60%;
+    justify-content:space-evenly;
+    width: 200px
+}

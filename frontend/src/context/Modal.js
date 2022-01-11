@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
 
-const ModalContext = React.createContext();
+export const EditModalContext = React.createContext();
 
 export function ModalProvider({ children }) {
     const modalRef = useRef();
@@ -14,16 +14,16 @@ export function ModalProvider({ children }) {
 
     return (
         <>
-            <ModalContext.Provider value={value}>
+            <EditModalContext.Provider value={value}>
                 {children}
-            </ModalContext.Provider>
+            </EditModalContext.Provider>
             <div ref={modalRef} />
         </>
     );
 }
 
 export function Modal({ onClose, children }) {
-    const modalNode = useContext(ModalContext);
+    const modalNode = useContext(EditModalContext);
     if (!modalNode) return null;
 
     return ReactDOM.createPortal(
