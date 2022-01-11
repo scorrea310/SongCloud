@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const CREATE_SONG = "songs/CREATE_SONG"
+const ALL_DELETE = "songs/ALL_DELETE"
 
 /*--------------------------------------------------------------------*/
 //song action creators
@@ -9,6 +10,11 @@ const setSong = (song) => ({
     type: CREATE_SONG,
     payload: song,
 });
+
+export const allSongsDelete = () => ({
+    type: ALL_DELETE,
+});
+
 
 /*--------------------------------------------------------------------*/
 
@@ -40,7 +46,6 @@ export const createSong = (songInfo) => async (dispatch) => {
 
     const data = await res.json()
 
-    console.log(">>>>>>>>>>>>>>>>.", data)
 
     dispatch(setSong(data))
 
@@ -55,7 +60,6 @@ export const createSong = (songInfo) => async (dispatch) => {
 
 
 const initialState = {
-    songs: null
 };
 
 
@@ -64,9 +68,16 @@ const songReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case CREATE_SONG:
-            newState = Object.assign({}, state)
+
+            newState = { ...state }
             newState[`${action.payload.id}`] = action.payload
             return newState
+
+        case ALL_DELETE:
+
+            const otherState = {
+            }
+            return otherState;
 
         default:
             return state;

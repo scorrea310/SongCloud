@@ -29,7 +29,7 @@
 }
 
 #leftNavSection{
-    width: 200px;
+    width: fit-content;
     display: flex;
     flex-direction: row;
 }
@@ -42,6 +42,22 @@
     font-family: Interstate,Lucida Grande,Arial,sans-serif;
     font-weight: 100;
     font-size: 14px;
+    padding-right: 10px;
+}
+
+.mySongsButton {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-family: Interstate,Lucida Grande,Arial,sans-serif;
+    font-weight: 100;
+    font-size: 14px;
+    border-left: 1px solid black;
+    width: 100px;
+    padding-left: 15px;
+    border-right: 1px solid black;
+    padding-right: 10px;
 }
 
 #profileButtonContainer {
