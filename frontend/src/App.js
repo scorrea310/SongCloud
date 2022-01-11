@@ -7,7 +7,7 @@ import Navigation from "./components/Navigation";
 import SignUpFormModal from "./components/SignUpformModal";
 import { useSelector } from 'react-redux';
 import UpLoadSong from "./components/UploadSong";
-
+import MySongs from "./components/MySongs";
 
 function App() {
 
@@ -30,6 +30,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && sessionLinks && (
         <Switch>
+          <Route exact path="/mysongs">
+            <MySongs />
+          </Route>
           <Route path="/upload">
             <UpLoadSong />
           </Route>

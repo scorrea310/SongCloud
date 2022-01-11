@@ -1,0 +1,47 @@
+.SongContainer {
+    width: 400px;
+    height: 400px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 46px;
+    border-radius: 3px;
+}
+
+#editButtonContainer {
+    width: 90%;
+    height: 46px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.editSongButton{
+    width: 76px;
+    height: 36px
+}
+
+.songImage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.audioContainer {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.songImagePic {
+    width: 200px;
+    height: 200px
+}
+
+.songTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
