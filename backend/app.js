@@ -28,10 +28,9 @@ if (!isProduction) {
     app.use(cors());
 }
 // helmet helps set a variety of headers to better secure your app
-// app.use(helmet({
-//     contentSecurityPolicy: false,
-//     crossOriginResourcePolicy: { policy: "cross-origin" }
-// }));
+app.use(helmet({
+    contentSecurityPolicy: false
+}));
 
 // Set the _csrf token and create req.csrfToken method
 app.use(
