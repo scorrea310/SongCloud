@@ -21,17 +21,24 @@ const MySongs = () => {
     console.log("=========", valueArray);
 
     let areThereSongs;
+    let divClassName;
 
     if (valueArray.length === 0) {
         areThereSongs = false
+        divClassName = "noSongs"
     } else {
         areThereSongs = true
+        divClassName = "songItemsContainer"
     }
 
 
-    return (<div className="songItemsContainer">
-        {areThereSongs ? valueArray.map((song) => <PlaySong key={song.url} song={song} />) : <h1> No Songs to Display</h1>}
-    </div>)
+
+
+    return (
+        <div className={divClassName}>
+            {areThereSongs ? valueArray.map((song) => <PlaySong key={song.url} song={song} />) : <h1> No Songs to Display</h1>}
+        </div>
+    )
 }
 
 
