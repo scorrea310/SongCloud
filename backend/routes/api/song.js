@@ -58,6 +58,24 @@ router.put("/:id", multipleMulterUpload("files"), asyncHandler(async (req, res) 
 }))
 
 
+//delete song
+
+router.delete("/:id", asyncHandler(async (req, res) => {
+
+
+    const { id } = req.params
+
+
+
+    const idOfSong = +id
+
+    const message = await Song.deleteSong({ idOfSong })
+
+    return res.json({ id })
+
+}))
+
+
 
 
 

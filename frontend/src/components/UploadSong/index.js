@@ -61,19 +61,18 @@ const UpLoadSong = () => {
                 image,
                 song,
             }
+            setTitle("")
+            setImage(null)
+            setSong(null)
 
             let newSong = await dispatch(createSong(songInfo))
-                .catch(async (res) => {
-                    const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
-                });
+            // .catch(async (res) => {
+            //     const data = await res.json();
+            //     if (data && data.errors) setErrors(data.errors);
+            // });
 
             if (newSong) {
-                setTitle("")
-                setImage(null)
-                setSong(null)
 
-                console.log(newSong)
                 history.push("/mysongs")
             }
 
