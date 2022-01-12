@@ -8,6 +8,8 @@ import SignUpFormModal from "./components/SignUpformModal";
 import { useSelector } from 'react-redux';
 import UpLoadSong from "./components/UploadSong";
 import MySongs from "./components/MySongs";
+import Home from "./components/Home";
+
 
 function App() {
 
@@ -18,7 +20,7 @@ function App() {
   const dispatch = useDispatch();
 
   const [isLoaded, setIsLoaded] = useState(false);
-  
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -32,6 +34,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && sessionLinks && (
         <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
           <Route exact path="/mysongs">
             <MySongs />
           </Route>

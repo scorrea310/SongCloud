@@ -19,7 +19,7 @@ const validateUploadSong = [
 
 
 // POST '/SONGS'
-router.post('/', multipleMulterUpload("files"), asyncHandler(async (req, res) => {
+router.post('/', validateUploadSong, multipleMulterUpload("files"), asyncHandler(async (req, res) => {
 
     //TODO: multiplemulterupload
     const { userId, albumId, title } = req.body;
