@@ -1,13 +1,19 @@
 import { Modal } from "../../context/Modal";
 import { useState } from "react";
 import "./EditModal.css"
+import { useDispatch, useSelector } from "react-redux";
+import { updateSong } from "../../store/songs";
+import { useHistory } from "react-router-dom";
 
 function EditSongFormModal({ song }) {
+    const history = useHistory()
+    const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
 
     const [title, setTitle] = useState("");
     const [image, setImage] = useState(null)
     const [newSong, setNewSong] = useState(null)
+    const [isLoaded, setIsLoaded] = useState(false)
 
     const addImage = (e) => {
         const file = e.target.files[0];
@@ -27,6 +33,38 @@ function EditSongFormModal({ song }) {
     -api route for put request where we update item in database.
     */
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        setIsLoaded(true)
+        let newErrors = [];
+
+        const songInfo = {
+            id: song.id,
+            title,
+            image,
+            newSong
+        }
+
+        let updatedSong = await dispatch(updateSong(songInfo))
+
+        console.log(updatedSong, "9999999999")
+
+        if (updatedSong) {
+            setTitle("")
+            setImage(null)
+            setNewSong(null)
+
+            console.log("does this owkr!!!!!")
+            setTimeout(() => {
+                history.push("/mysongs")
+            }, 5000)
+
+
+        }
+
+    };
+
 
 
     return (
@@ -36,6 +74,7 @@ function EditSongFormModal({ song }) {
                 <Modal onClose={() => setShowModal(false)}>
                     <form
                         className="editSongForm"
+                        onSubmit={handleSubmit}
                     >
                         <div id="editSongText">Edit Song</div>
 
