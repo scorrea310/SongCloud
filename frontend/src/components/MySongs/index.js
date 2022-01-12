@@ -6,9 +6,7 @@ import {
 const MySongs = () => {
 
     /*
-    
     -loop through songs in redux store and make a song component for each song.
-    
     */
 
     const songs = useSelector(state => state.songs);

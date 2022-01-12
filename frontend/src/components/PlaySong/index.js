@@ -1,17 +1,15 @@
-import ReactPlayer from 'react-player'
 import "./PlaySong.css"
 import EditSongFormModal from '../EditSongModal'
+import { useEffect, useState } from "react"
 
 const PlaySong = ({ song }) => {
 
-    /*
-    1. take in a song as a prop. destructure
-    2. set CSS for
-    
-    */
+    const [isSong, setIsSong] = useState(false)
 
-    return (
-        
+    let songItem;
+
+    if (song) {
+        songItem = (
             <div className='SongContainer'>
                 <div id="editButtonContainer">
                     <EditSongFormModal song={song} />
@@ -24,7 +22,13 @@ const PlaySong = ({ song }) => {
                     <audio src={`${song.url}`} preload="auto" controls className='audioElement'></audio>
                 </div>
             </div>
-    )
+        )
+    } else {
+        songItem = null
+    }
+
+
+    return (songItem)
 }
 
 

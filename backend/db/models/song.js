@@ -51,9 +51,17 @@ module.exports = (sequelize, DataTypes) => {
 
 
 
+  Song.updateSong = async function ({ id, url, title, imageUrl }) {
+
+    const song = await Song.findByPk(id)
+
+    const updatedSong = await song.update({ url, title, imageUrl })
+
+    const finalUpdatedSong = await updatedSong.save()
 
 
-
+    return finalUpdatedSong.dataValues
+  }
 
 
 

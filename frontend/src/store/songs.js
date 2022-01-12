@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const CREATE_SONG = "songs/CREATE_SONG"
 const ALL_DELETE = "songs/ALL_DELETE"
+const UPDATE_SONG = "songs/UPDATE_SONG"
 
 /*--------------------------------------------------------------------*/
 //song action creators
@@ -16,6 +17,8 @@ export const allSongsDelete = () => ({
 });
 
 
+
+
 /*--------------------------------------------------------------------*/
 
 
@@ -24,7 +27,6 @@ export const allSongsDelete = () => ({
 
 export const createSong = (songInfo) => async (dispatch) => {
 
-    console.log(songInfo);
 
     const { userId, albumId, title, image, song } = songInfo
 
@@ -52,6 +54,42 @@ export const createSong = (songInfo) => async (dispatch) => {
     return data
 
 }
+
+
+
+export const updateSong = (songInfo) => async (dispatch) => {
+
+    console.log("000000000000000", songInfo);
+
+    const { id, title, image, newSong } = songInfo
+
+    //works now
+    console.log(".............", newSong)
+
+    const formData = new FormData();
+
+    formData.append("title", title)
+    formData.append("files", image)
+    formData.append("files", newSong)
+
+    const res = await csrfFetch(`/api/songs/${id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body: formData
+    })
+
+    const data = await res.json()
+
+
+    dispatch(setSong(data))
+
+    return data
+
+}
+
+
 
 
 
