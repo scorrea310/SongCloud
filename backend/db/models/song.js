@@ -44,18 +44,38 @@ module.exports = (sequelize, DataTypes) => {
     const newSong = await song.save()
 
 
-    console.log("++++++++++", newSong.dataValues)
+
 
     return newSong.dataValues
   }
 
 
 
+  Song.updateSong = async function ({ id, url, title, imageUrl }) {
+
+    const song = await Song.findByPk(id)
+
+    const updatedSong = await song.update({ url, title, imageUrl })
+
+    const finalUpdatedSong = await updatedSong.save()
 
 
+    return finalUpdatedSong.dataValues
+  }
 
 
+  Song.deleteSong = async function ({ idOfSong }) {
 
+
+    const song = await Song.findByPk(idOfSong)
+
+
+    const deleteSong = await song.destroy()
+
+
+    return { message: "Success" }
+
+  }
 
   return Song;
 };

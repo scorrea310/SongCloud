@@ -1,15 +1,16 @@
 .middleSection {
     width: 60%;
-    height: 900px;
+    height: 700px;
     background-color: black;
     display: flex;
     flex-direction: row;
     margin-top: 46px;
+    border-radius: 3px;
 }
 
 .leftImageSection {
     width: 250px;
-    height: 80%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +22,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    margin-top: 60px;
+    margin-top: 50px;
 }
 
 .formContainer {
@@ -30,6 +31,7 @@
     background-color: white;
     display: flex;
     flex-direction: column;
+      border-radius: 3px;
 }
 
 .pianoImage {
@@ -38,14 +40,16 @@
     background-image: url("../../../public/images/piano\ Image.jpeg");
     background-size: cover;
     background-position: center;
+    border-radius: 3px;
 }
 
 .rightImage{
     width: 250px;
-    height: 80%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+      border-radius: 3px;
 }
 
 .micImage { 
@@ -135,4 +139,21 @@ span {
 
 #uploadSongButton {
     margin-bottom: 10px;
+}
+
+.errorsDiv {
+    height: fit-content;
+    width: 200px;
+    margin-top: 15px;
+    margin-left: 15px;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid #f50;
+    padding: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.errorLi {
+    margin-top: 10px;
 }

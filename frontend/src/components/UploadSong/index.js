@@ -29,28 +29,58 @@ const UpLoadSong = () => {
 
 
     const handleSubmit = async (e) => {
+
+        let audioTypes = /(\.|\/)(mp3|mp4)$/i;
+        let imageTypes = /(\.|\/)(jpg|jpeg|png)$/i;
+
+
         e.preventDefault();
-        setIsLoaded(true)
+
         let newErrors = [];
 
-        const songInfo = {
-            userId,
-            albumId: null,
-            title,
-            image,
-            song,
+        if (imageTypes.test(image.name) === false) {
+
+            newErrors.push("Image type can only be .jpg, .jpeg, or .png")
         }
 
-        let newSong = await dispatch(createSong(songInfo))
+        if (audioTypes.test(song.name) === false) {
 
-        if (newSong) {
+            newErrors.push("Audio file must be mp3 or mp4 type.")
+        }
+
+
+        if (newErrors.length === 0) {
+
+            setErrors([])
+            setIsLoaded(true)
+
+            const songInfo = {
+                userId,
+                albumId: null,
+                title,
+                image,
+                song,
+            }
             setTitle("")
             setImage(null)
             setSong(null)
 
-            console.log(newSong)
-            history.push("/mysongs")
+            let newSong = await dispatch(createSong(songInfo))
+            // .catch(async (res) => {
+            //     const data = await res.json();
+            //     if (data && data.errors) setErrors(data.errors);
+            // });
+
+            if (newSong) {
+
+                history.push("/mysongs")
+            }
+
+
+        } else {
+            setErrors(newErrors)
         }
+
 
     };
 
@@ -64,6 +94,10 @@ const UpLoadSong = () => {
         if (file) setSong(file);
     }
 
+    const errorsDivAndElements = (
+        <div className="errorsDiv"> {errors.map((error) => <div className="errorLi" key={error}>{error}<br></br></div>)} </div>
+    )
+
     return (
         <div className="middleSection">
             <div className="leftImageSection">
@@ -73,7 +107,7 @@ const UpLoadSong = () => {
 
                 <div className="formContainer">
                     {errors.length > 0 &&
-                        errors.map((error) => <div key={error}>{error}</div>)}
+                        errorsDivAndElements}
                     <div className="uploadText">Upload a Song</div>
                     <form
                         className="uploadSongForm"
@@ -81,19 +115,18 @@ const UpLoadSong = () => {
                     >
                         <div className="imageBox">
                             <span>Image</span>
-                            <input className="imageInput" type="file" onChange={addImage} />
+                            <input className="imageInput" type="file" onChange={addImage} required />
                         </div>
                         <div className="songAndTitleContainer">
                             <label id="title">Title
-                                <input value={title} className="titleInput" type="text" onChange={(e) => setTitle(e.target.value)} />
+                                <input required value={title} className="titleInput" type="text" onChange={(e) => setTitle(e.target.value)} />
                             </label>
                             <label>Song file:
-                                <input className="songInput" type="file" onChange={addSong} />
+                                <input required className="songInput" type="file" onChange={addSong} />
                             </label>
                         </div>
                         <div className="uploadButtonAndLoadingIcon">
                             {isLoaded ? loadingIconAndText : null}
-
                             <button id="uploadSongButton" type="submit">Upload Song</button>
                         </div>
                     </form>

@@ -2,7 +2,8 @@ import { csrfFetch } from "./csrf";
 
 const CREATE_SONG = "songs/CREATE_SONG"
 const ALL_DELETE = "songs/ALL_DELETE"
-
+const UPDATE_SONG = "songs/UPDATE_SONG"
+const DELETE_SONG = "songs/DELETE_SONG"
 /*--------------------------------------------------------------------*/
 //song action creators
 
@@ -16,6 +17,15 @@ export const allSongsDelete = () => ({
 });
 
 
+
+const deleteSong = (id) => ({
+    type: DELETE_SONG,
+    payload: id
+})
+
+
+
+
 /*--------------------------------------------------------------------*/
 
 
@@ -24,7 +34,6 @@ export const allSongsDelete = () => ({
 
 export const createSong = (songInfo) => async (dispatch) => {
 
-    console.log(songInfo);
 
     const { userId, albumId, title, image, song } = songInfo
 
@@ -55,6 +64,59 @@ export const createSong = (songInfo) => async (dispatch) => {
 
 
 
+export const updateSong = (songInfo) => async (dispatch) => {
+
+
+
+    const { id, title, image, newSong } = songInfo
+
+
+    const formData = new FormData();
+
+    formData.append("title", title)
+    formData.append("files", image)
+    formData.append("files", newSong)
+
+    const res = await csrfFetch(`/api/songs/${id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body: formData
+    })
+
+    const data = await res.json()
+
+
+    dispatch(setSong(data))
+
+    return data
+
+}
+
+
+export const deleteSongThunk = (id) => async (dispatch) => {
+
+
+    const res = await csrfFetch(`/api/songs/${id}`, {
+        method: 'DELETE',
+    })
+
+    if (res.ok) {
+        const data = await res.json()
+       
+        dispatch(deleteSong(id))
+    }
+
+
+
+
+
+}
+
+
+
+
 /*--------------------------------------------------------------------*/
 
 
@@ -78,6 +140,16 @@ const songReducer = (state = initialState, action) => {
             const otherState = {
             }
             return otherState;
+
+        case DELETE_SONG:
+
+            const updateState = {
+                ...state
+            }
+
+            delete updateState[`${action.payload}`]
+
+            return updateState
 
         default:
             return state;
