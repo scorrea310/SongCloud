@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 
 const PlaySong = ({ song }) => {
 
-    const [isSong, setIsSong] = useState(false)
+    // const [isSong, setIsSong] = useState(false)
 
     let songItem;
 

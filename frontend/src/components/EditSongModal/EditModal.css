@@ -28,15 +28,12 @@
   height: 400px;
   width: 400px;
 }
-
-.editSongButton { 
-    width: 80px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+.deleteSongButton {
+    width: 60px;
     background: none;
-    border: 1px solid #f50;
+    border: 1px solid black;
     border-radius: 3px;
-    color: #f50;
+    color: black;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
     font-size: 13px;
     cursor: pointer;
@@ -46,7 +43,25 @@
     padding-left: 0px;
     padding-right: 0px;
     margin-top: 10px;
-    height: 30px;
+    height: 25px;
+}
+
+.editSongButton { 
+    width: 70px;
+    background: none;
+    border: 1px solid black;
+    border-radius: 3px;
+    color: black;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 15px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 10px;
+    height: 25px;
 }
 
 .editSongForm {

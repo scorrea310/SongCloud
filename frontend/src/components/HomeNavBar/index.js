@@ -3,6 +3,11 @@ import { NavLink } from "react-router-dom"
 import "./HomeNavBar.css"
 
 const HomeNavBar = ({ user }) => {
+
+    /*
+    
+    
+    */
     return (
         <nav className="homeNavBar">
             <div className="middleSectionNav">

@@ -3,24 +3,26 @@ import "./MySongs.css"
 import {
     useSelector
 } from "react-redux";
+
+import { useState } from "react";
+
 const MySongs = () => {
 
-    /*
-    -loop through songs in redux store and make a song component for each song.
-    */
 
+
+ 
     const songs = useSelector(state => state.songs);
 
-    console.log(songs);
+
 
 
     let valueArray = Object.values(songs);
 
-    console.log("=========", valueArray);
+ 
 
-    let areThereSongs;
+
     let divClassName;
-
+    let areThereSongs;
     if (valueArray.length === 0) {
         areThereSongs = false
         divClassName = "noSongs"
@@ -28,7 +30,6 @@ const MySongs = () => {
         areThereSongs = true
         divClassName = "songItemsContainer"
     }
-
 
 
 

@@ -3,7 +3,7 @@ import { csrfFetch } from "./csrf";
 const CREATE_SONG = "songs/CREATE_SONG"
 const ALL_DELETE = "songs/ALL_DELETE"
 const UPDATE_SONG = "songs/UPDATE_SONG"
-
+const DELETE_SONG = "songs/DELETE_SONG"
 /*--------------------------------------------------------------------*/
 //song action creators
 
@@ -15,6 +15,13 @@ const setSong = (song) => ({
 export const allSongsDelete = () => ({
     type: ALL_DELETE,
 });
+
+
+
+const deleteSong = (id) => ({
+    type: DELETE_SONG,
+    payload: id
+})
 
 
 
@@ -59,12 +66,10 @@ export const createSong = (songInfo) => async (dispatch) => {
 
 export const updateSong = (songInfo) => async (dispatch) => {
 
-    console.log("000000000000000", songInfo);
+
 
     const { id, title, image, newSong } = songInfo
 
-    //works now
-    console.log(".............", newSong)
 
     const formData = new FormData();
 
@@ -89,6 +94,25 @@ export const updateSong = (songInfo) => async (dispatch) => {
 
 }
 
+
+export const deleteSongThunk = (id) => async (dispatch) => {
+
+
+    const res = await csrfFetch(`/api/songs/${id}`, {
+        method: 'DELETE',
+    })
+
+    if (res.ok) {
+        const data = await res.json()
+       
+        dispatch(deleteSong(id))
+    }
+
+
+
+
+
+}
 
 
 
@@ -116,6 +140,16 @@ const songReducer = (state = initialState, action) => {
             const otherState = {
             }
             return otherState;
+
+        case DELETE_SONG:
+
+            const updateState = {
+                ...state
+            }
+
+            delete updateState[`${action.payload}`]
+
+            return updateState
 
         default:
             return state;

@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
     const newSong = await song.save()
 
 
-    console.log("++++++++++", newSong.dataValues)
+
 
     return newSong.dataValues
   }
@@ -64,6 +64,18 @@ module.exports = (sequelize, DataTypes) => {
   }
 
 
+  Song.deleteSong = async function ({ idOfSong }) {
+
+
+    const song = await Song.findByPk(idOfSong)
+
+
+    const deleteSong = await song.destroy()
+
+
+    return { message: "Success" }
+
+  }
 
   return Song;
 };
