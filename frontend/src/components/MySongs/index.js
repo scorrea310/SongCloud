@@ -1,24 +1,35 @@
 import PlaySong from "../PlaySong";
 import "./MySongs.css"
-import {
-    useSelector
-} from "react-redux";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { loadUsersSongs } from "../../store/songs";
 
-import { useState } from "react";
+
 
 const MySongs = () => {
 
+    const dispatch = useDispatch();
 
 
- 
-    const songs = useSelector(state => state.songs);
-
+    let songs = useSelector(state => state.songs);
+    const sessionUser = useSelector(state => state.session.user);
 
 
 
     let valueArray = Object.values(songs);
 
- 
+
+
+    // useEffect(() => {
+
+    //     let getSongs = async () => {
+    //         songs = await dispatch(loadUsersSongs(sessionUser.id))
+    //     }
+
+
+    // }, [])
+
 
 
     let divClassName;

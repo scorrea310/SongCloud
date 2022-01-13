@@ -1,6 +1,6 @@
 import LandingNavSection from "./LandingNavSection"
 import "./LandingPage.css"
-
+import LandingGallery from "../LandingGallery"
 const LandingPage = () => {
 
     /*
@@ -14,6 +14,7 @@ const LandingPage = () => {
     return (
         <div className="LandingPage">
             <LandingNavSection />
+            <LandingGallery />
         </div>
     )
 }

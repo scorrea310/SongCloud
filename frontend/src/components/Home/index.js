@@ -6,7 +6,6 @@ const Home = () => {
     const [selectedArtist, setSelectedArtist] = useState("Kid Cudi")
 
     /*
-    
     started useState of selectedArtist as "KidCudi"
 
     onClick of each div, change selectedArtist to that
@@ -22,7 +21,7 @@ const Home = () => {
     const kanyeWestClassName = selectedArtist === "Kanye West" ? 'artist selected' : 'artist'
 
 
-    
+
 
 
     return (
