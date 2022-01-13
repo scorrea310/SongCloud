@@ -19,7 +19,9 @@ justify-content: center;
     width: 50%;
     min-height: 800px;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    padding-left: 80px;
+    justify-content: center;
 }
 
 .chooseArtistContainer {
@@ -70,6 +72,16 @@ justify-content: center;
 
 .artist.kidCudi.selected {
     width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid hsla(0,0%,100%,.1);
+    background-color: hsla(0,0%,100%,.2);;
+}
+
+.artist.selected {
+ width: 100%;
     height: 50px;
     display: flex;
     justify-content: center;
