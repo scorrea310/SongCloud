@@ -28,16 +28,16 @@ Visit Live Site: https://song-cloud-clone.herokuapp.com/
 
 `"proxy": "http://localhost:5000"`
 
-7. Create Database, Migrate, and Seed models.
+7.Create Database, Migrate, and Seed models.
 
 `npx dotenv sequelize db:create`
 `npx dotenv sequelize db:migrate`
 `npx dotenv sequelize db:seed:all`
-`Start the services in the backend directory.`
+8.Start the services in the backend directory.
 
-Start the services in the frontend directory, which should open the project in your default browser. If not, navigate to http://localhost:3000.
+9.Start the services in the frontend directory, which should open the project in your default browser. If not, navigate to http://localhost:3000.
 `npm start`
 
 
-You can use the Demo user or create an account to begin using SongCloud.
+10.You can use the Demo user or create an account to begin using SongCloud.
 `npm start`
