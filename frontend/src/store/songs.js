@@ -132,10 +132,16 @@ export const deleteSongThunk = (id) => async (dispatch) => {
 
 export const loadUsersSongs = (id) => async (dispatch) => {
 
+
+
     const res = await csrfFetch(`/api/songs/${id}`)
 
+
     if (res.ok) {
+
         const data = await res.json()
+
+
 
         dispatch(loadSongsAction(data, id))
 
@@ -153,6 +159,8 @@ export const loadUsersSongs = (id) => async (dispatch) => {
 
 
 const initialState = {
+
+
 };
 
 
@@ -189,8 +197,8 @@ const songReducer = (state = initialState, action) => {
                 newSongs[song.id] = song;
             })
 
+
             return {
-                ...state,
                 ...newSongs
             }
         default:

@@ -96,9 +96,15 @@ router.get("/:id", asyncHandler(async (req, res) => {
 
     const { id } = req.params
 
+    
+
     const idOfUser = +id
 
+
+
     const songs = await Song.getUsersSongs(idOfUser)
+
+    
 
     return res.json(songs);
 

@@ -13,7 +13,7 @@ const MySongs = () => {
 
 
     let songs = useSelector(state => state.songs);
-    const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session?.user);
 
 
 
@@ -21,14 +21,11 @@ const MySongs = () => {
 
 
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     let getSongs = async () => {
-    //         songs = await dispatch(loadUsersSongs(sessionUser.id))
-    //     }
+        dispatch(loadUsersSongs(sessionUser.id))
 
-
-    // }, [])
+    }, [dispatch])
 
 
 

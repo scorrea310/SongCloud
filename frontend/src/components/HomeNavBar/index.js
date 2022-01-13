@@ -15,6 +15,7 @@ const HomeNavBar = ({ user }) => {
                     <div id="navIcon">
                         <i className="fab fa-soundcloud" id="homeIcon"></i>
                     </div>
+
                     <NavLink className="homeButton" exact to="/">Home</NavLink>
                     <NavLink className="mySongsButton" exact to="/mysongs">My Songs</NavLink>
                 </div>
