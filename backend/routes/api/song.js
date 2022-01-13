@@ -11,7 +11,7 @@ const router = express.Router();
 
 const validateUploadSong = [
     check('title')
-        .exists({ checkFalsy: true })
+        .exists({ checkFalsey: true })
         .withMessage('Please enter a Title.'),
     handleValidationErrors,
 ];
@@ -19,7 +19,7 @@ const validateUploadSong = [
 
 
 // POST '/SONGS'
-router.post('/', multipleMulterUpload("files"), asyncHandler(async (req, res) => {
+router.post('/', multipleMulterUpload("files"), validateUploadSong, asyncHandler(async (req, res) => {
 
     //TODO: multiplemulterupload
     const { userId, albumId, title } = req.body;
@@ -40,15 +40,30 @@ router.post('/', multipleMulterUpload("files"), asyncHandler(async (req, res) =>
 
 router.put("/:id", multipleMulterUpload("files"), asyncHandler(async (req, res) => {
 
-    const { title } = req.body;
+    const { title, image, newSong } = req.body;
 
     const id = req.params.id
 
+    let imageUrl;
+    let url;
 
-    const imageUrl = await singlePublicFileUpload(req.files[0]);
+    if (image === undefined) {
+        imageUrl = await singlePublicFileUpload(req.files[0]);
+
+    } else {
+        imageUrl = image
+    }
 
 
-    const url = await singlePublicFileUpload(req.files[1]);
+
+    if (newSong === undefined && image !== undefined) {
+
+        url = await singlePublicFileUpload(req.files[0]);
+    } else if (newSong === undefined && image === undefined) {
+        url = await singlePublicFileUpload(req.files[1]);
+    } else {
+        url = newSong
+    }
 
 
     const song = await Song.updateSong({ id: +id, url, title, imageUrl });
@@ -76,6 +91,18 @@ router.delete("/:id", asyncHandler(async (req, res) => {
 }))
 
 
+
+router.get("/:id", asyncHandler(async (req, res) => {
+
+    const { id } = req.params
+
+    const idOfUser = +id
+
+    const songs = await Song.getUsersSongs(idOfUser)
+
+    return res.json(songs);
+
+}))
 
 
 
