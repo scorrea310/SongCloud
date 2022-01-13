@@ -12,9 +12,9 @@ function EditSongFormModal({ song }) {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
 
-    const [title, setTitle] = useState("");
-    const [image, setImage] = useState(null)
-    const [newSong, setNewSong] = useState(null)
+    const [title, setTitle] = useState(song.title);
+    const [image, setImage] = useState(song.imageUrl)
+    const [newSong, setNewSong] = useState(song.url)
     const [isLoaded, setIsLoaded] = useState(false)
 
     const addImage = (e) => {
@@ -38,6 +38,15 @@ function EditSongFormModal({ song }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+
+        if (image === null) {
+            setImage(song.imageUrl)
+        }
+
+        if (newSong === null) {
+            setNewSong(song.url)
+        }
+
         setIsLoaded(true)
         let newErrors = [];
 
@@ -48,13 +57,11 @@ function EditSongFormModal({ song }) {
             newSong
         }
 
-        setTitle("")
-        setImage(null)
-        setNewSong(null)
+        // setTitle("")
+        // setImage(null)
+        // setNewSong(null)
 
         let updatedSong = await dispatch(updateSong(songInfo))
-
-
 
     };
 

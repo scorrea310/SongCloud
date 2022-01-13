@@ -4,6 +4,7 @@ const CREATE_SONG = "songs/CREATE_SONG"
 const ALL_DELETE = "songs/ALL_DELETE"
 const UPDATE_SONG = "songs/UPDATE_SONG"
 const DELETE_SONG = "songs/DELETE_SONG"
+const LOAD_USERS_SONGS = "songs/LOAD_USERS_SONGS"
 /*--------------------------------------------------------------------*/
 //song action creators
 
@@ -23,7 +24,11 @@ const deleteSong = (id) => ({
     payload: id
 })
 
-
+const loadSongsAction = (data, id) => ({
+    type: LOAD_USERS_SONGS,
+    data,
+    id
+})
 
 
 /*--------------------------------------------------------------------*/
@@ -74,8 +79,21 @@ export const updateSong = (songInfo) => async (dispatch) => {
     const formData = new FormData();
 
     formData.append("title", title)
-    formData.append("files", image)
-    formData.append("files", newSong)
+
+    if (typeof image === "string") {
+        formData.append("image", image)
+    } else {
+        formData.append("files", image)
+
+    }
+
+    if (typeof newSong === "string") {
+        formData.append("newSong", newSong)
+    } else {
+
+        formData.append("files", newSong)
+    }
+
 
     const res = await csrfFetch(`/api/songs/${id}`, {
         method: 'PUT',
@@ -104,12 +122,31 @@ export const deleteSongThunk = (id) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json()
-       
+
         dispatch(deleteSong(id))
     }
 
 
+}
 
+
+export const loadUsersSongs = (id) => async (dispatch) => {
+
+
+
+    const res = await csrfFetch(`/api/songs/${id}`)
+
+
+    if (res.ok) {
+
+        const data = await res.json()
+
+
+
+        dispatch(loadSongsAction(data, id))
+
+        return data;
+    }
 
 
 }
@@ -122,6 +159,8 @@ export const deleteSongThunk = (id) => async (dispatch) => {
 
 
 const initialState = {
+
+
 };
 
 
@@ -151,6 +190,17 @@ const songReducer = (state = initialState, action) => {
 
             return updateState
 
+        case LOAD_USERS_SONGS:
+            const newSongs = {};
+
+            action.data.forEach(song => {
+                newSongs[song.id] = song;
+            })
+
+
+            return {
+                ...newSongs
+            }
         default:
             return state;
     }

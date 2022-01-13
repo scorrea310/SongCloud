@@ -66,10 +66,10 @@ const UpLoadSong = () => {
             setSong(null)
 
             let newSong = await dispatch(createSong(songInfo))
-            // .catch(async (res) => {
-            //     const data = await res.json();
-            //     if (data && data.errors) setErrors(data.errors);
-            // });
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+                });
 
             if (newSong) {
 
