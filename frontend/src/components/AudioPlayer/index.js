@@ -4,24 +4,23 @@ import { FaPlay } from "react-icons/fa"
 import { FaPause } from "react-icons/fa"
 import { useState, useRef, useEffect } from "react"
 import "./AudioPlayer.css"
-
+import { HiVolumeUp } from "react-icons/hi"
 const AudioPlayer = () => {
 
+    // states
     const [isPlaying, setIsPlaying] = useState(false)
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0)
+    const [volume, setVolume] = useState(1.0)
+
+
+
     //references 
     const audioPlayer = useRef()
     const progressBar = useRef() //reference to progress bar 
     const animationRef = useRef();
+    const volumeBar = useRef()
 
-    // useEffect(() => {
-    //     const seconds = Math.floor(audioPlayer.current.duration)
-    //     setDuration(seconds)
-
-    //     progressBar.current.max = seconds;
-
-    // }, [audioPlayer?.current?.loadedmetaData, audioPlayer?.current?.readyState])
 
 
     const calculateTime = (secs) => {
@@ -75,6 +74,10 @@ const AudioPlayer = () => {
         changeRange()
     }
 
+    const changeVolume = () => {
+        audioPlayer.current.volume = volumeBar.current.value / 100
+    }
+
     return (
         <div className="audioPlayer">
             <div className="centerAudioControls">
@@ -88,6 +91,7 @@ const AudioPlayer = () => {
 
                         progressBar.current.max = seconds;
                     }}></audio>
+
                 <button className="forwardBackward" onClick={backThirty}> <BsArrowLeftShort /> 30</button>
                 <button className="playPause" onClick={togglePausePlay}> {isPlaying ? <FaPause /> : <FaPlay className="playButton" />}</button>
                 <button className="forwardBackward" onClick={forwardThirty} > 30 <BsArrowRightShort /> </button>
@@ -99,6 +103,10 @@ const AudioPlayer = () => {
                 </div>
 
                 <div className="duration">{(duration && isNaN(duration) === false) && calculateTime(duration)}</div>
+                <HiVolumeUp className="volumeIcon" />
+                <div className="volumeContainer">
+                    <input type="range" defaultValue="100" className="volumeInput" ref={volumeBar} onChange={changeVolume}></input>
+                </div>
             </div>
         </div >
     )
