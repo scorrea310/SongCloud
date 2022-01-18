@@ -1,0 +1,103 @@
+.audioPlayer {
+--primary: #f50;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 49px;
+    position: fixed;
+    bottom: 0;
+    justify-content: center;
+    border-top: 1px solid #cecece;
+    background-color: #f2f2f2;
+    align-items: center;
+}
+
+.forwardBackward { 
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    cursor: pointer;
+}
+
+.forwardBackward:hover { 
+color: var(--primary);
+
+}
+
+.playPause {
+    background-color: var(--primary);
+    border: none;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.playButton {
+    padding-left: 2px;
+}
+
+.currentTime,
+.duration {
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    font-size: 16px;
+}
+
+.duration {
+    margin-left: 10px;
+}
+
+.currentTime {
+    margin-left: 25px;
+    margin-right: 10px;
+}
+
+.progressBar {
+   --seek-before-width: 0;
+   width: 600px;
+   height: 1px;
+   background: var(--primary);
+   display: flex;
+   align-items: center;
+   background-color: var(--primary);
+   -webkit-appearance: none;
+}
+
+.progressBar::-webkit-slider-thumb{
+    background: red;
+    color: red;
+    border-radius: 50%;
+    background-color: var(--primary);
+     -webkit-appearance: none;
+    border: none;
+    height: 13px;
+    width: 13px;
+    border-radius: 50%;
+    background: --primary;
+    margin-top: -6px;
+}
+
+.progressBar::-webkit-slider-runnable-track {
+   background: var(--primary); 
+   height: 1px;
+
+}
+
+.centerAudioControls {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.progressBarContainer{
+    display: flex;
+    align-items: center;
+}

@@ -2,7 +2,7 @@ import LandingNavSection from "./LandingNavSection"
 import "./LandingPage.css"
 import LandingGallery from "../LandingGallery"
 import { useHistory } from "react-router-dom"
-
+import AudioPlayer from "../AudioPlayer"
 const LandingPage = () => {
 
     const history = useHistory()
