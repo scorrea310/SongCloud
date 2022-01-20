@@ -1,0 +1,29 @@
+
+
+.songPlayPauseCover {
+    --primary: #f50;
+    width: 200px;
+    height: 200px;
+}
+
+.isPlaying {
+    background-color: var(--primary);
+    border: none;
+    height: 35px;
+    min-width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.isPaused {
+    background-color: var(--primary);
+    border: none;
+    height: 35px;
+    min-width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; 
+}
