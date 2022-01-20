@@ -30,7 +30,7 @@ color: var(--primary);
     background-color: var(--primary);
     border: none;
     height: 35px;
-    width: 35px;
+    min-width: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,11 +49,13 @@ color: var(--primary);
 
 .duration {
     margin-left: 10px;
+     min-width: fit-content;
 }
 
 .currentTime {
     margin-left: 25px;
     margin-right: 10px;
+    min-width: fit-content;
 }
 
 .progressBar {
