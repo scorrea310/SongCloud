@@ -25,7 +25,7 @@
 
 #htmlLogo {
     color: #e34c26;
-     margin-right: 10px;
+    margin-left: 6px;
 }
 
 #cssLogo {
@@ -45,6 +45,7 @@
     display: flex;
     flex-direction: column;
     margin-right: 20px;
+
 }
 
 .reduxLogo {
