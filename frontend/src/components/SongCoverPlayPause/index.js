@@ -22,23 +22,27 @@ const SongCoverPlayPause = ({ song }) => {
     */
 
 
+
     return (
-        <div style={{
-            width: "200px", height: "200px",
-            backgroundImage: `url(${song.imageUrl})`,
-            backgroundSize: "cover",
-            backgroundPosition: "50% 50%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
-        }}>
+        <div
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            style={{
+                width: "200px", height: "200px",
+                backgroundImage: `url(${song.imageUrl})`,
+                backgroundSize: "cover",
+                backgroundPosition: "50% 50%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
             {
                 (() => {
                     if (isHovered) {
                         if (isPlaying) {
-                            return <button className="isPlaying"> <FaPause /> </button>
+                            return <button className="isPlaying" onClick={() => setIsPlaying(false)}> <FaPause /> </button>
                         } else {
-                            return <button className="isPaused"> <FaPlay /> </button>
+                            return <button className="isPaused" onClick={() => setIsPlaying(true)}> <FaPlay /> </button>
                         }
                     }
                 })()

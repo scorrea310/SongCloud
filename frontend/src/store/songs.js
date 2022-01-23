@@ -159,8 +159,8 @@ export const loadUsersSongs = (id) => async (dispatch) => {
 
 
 const initialState = {
-
-
+    currentSong: null,
+    isPlayingCurrentSong: false
 };
 
 
