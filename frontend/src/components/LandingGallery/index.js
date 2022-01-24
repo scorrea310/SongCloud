@@ -9,7 +9,9 @@ const LandingGallery = () => {
         albumId: null,
         url: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/Cudi+Zone.mp3",
         title: "Cudi Zone",
-        imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/kid-cudi-man-on-the-moon-album-cover-art-2.jpeg"
+        imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/kid-cudi-man-on-the-moon-album-cover-art-2.jpeg",
+        songId: 1,
+        artistName: "Kid Cudi"
     }
 
 

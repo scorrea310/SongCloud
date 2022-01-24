@@ -60,7 +60,7 @@ color: var(--primary);
 
 .progressBar {
    --seek-before-width: 0;
-   width: 600px;
+   width: 400px;
    height: 1px;
    background: var(--primary);
    display: flex;
@@ -107,6 +107,7 @@ color: var(--primary);
 .volumeIcon {
     margin-right: 10px;
     margin-left: 30px;
+    min-width: 16px
 }
 
 .volumeInput {
@@ -135,6 +136,10 @@ color: var(--primary);
 .volumeContainer {
     display: flex;
     align-items: center;
+}
+
+.audioPlayerSongArtistAndName {
+    margin-left: 20px;
 }
 
 

@@ -5,10 +5,20 @@ import { FaPause } from "react-icons/fa"
 import { useState, useRef, useEffect } from "react"
 import "./AudioPlayer.css"
 import { HiVolumeUp } from "react-icons/hi"
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { pauseSong } from "../../store/currentSong"
+import { playSong } from "../../store/currentSong"
+
 const AudioPlayer = () => {
 
+    const dispatch = useDispatch();
+
+    let currentSongToPlay = useSelector(state => state.currentSong);
+
+
     // states
-    const [isPlaying, setIsPlaying] = useState(false)
+    // const [isPlaying, setIsPlaying] = useState(false)
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0)
     const [volume, setVolume] = useState(1.0)
@@ -22,7 +32,6 @@ const AudioPlayer = () => {
     const volumeBar = useRef()
 
 
-
     const calculateTime = (secs) => {
         const minutes = Math.floor(secs / 60);
         const returnedMinutes = minutes < 10 ? `${minutes}` : `${minutes}`
@@ -33,10 +42,42 @@ const AudioPlayer = () => {
     }
 
 
+
+
+
+    const whilePlaying = () => {
+        progressBar.current.value = audioPlayer.current.currentTime;
+        progressBar.current.style.setProperty("--seek-before-width", `${progressBar.current.value / duration * 100}%`)
+        setCurrentTime(progressBar.current.value)
+        animationRef.current = requestAnimationFrame(whilePlaying)
+    }
+
+
+
+    let isPlaying;
+    if (currentSongToPlay.isPlayingSong) {
+        isPlaying = true
+        audioPlayer.current.play()
+        animationRef.current = requestAnimationFrame(whilePlaying)
+    } else if (currentSongToPlay.isPlayingSong === false) {
+        isPlaying = false
+        audioPlayer.current.pause()
+        cancelAnimationFrame(animationRef.current)
+    }
+
+
+
+
     const togglePausePlay = () => {
         const prevValue = isPlaying
 
-        setIsPlaying(!prevValue)
+
+        if (prevValue) {
+            dispatch(pauseSong())
+        } else {
+            dispatch(playSong(currentSongToPlay))
+        }
+
 
         if (!prevValue) {
             audioPlayer.current.play()
@@ -47,12 +88,7 @@ const AudioPlayer = () => {
         }
     }
 
-    const whilePlaying = () => {
-        progressBar.current.value = audioPlayer.current.currentTime;
-        progressBar.current.style.setProperty("--seek-before-width", `${progressBar.current.value / duration * 100}%`)
-        setCurrentTime(progressBar.current.value)
-        animationRef.current = requestAnimationFrame(whilePlaying)
-    }
+
 
     const changeRange = () => {
         audioPlayer.current.currentTime = progressBar.current.value;
@@ -83,7 +119,7 @@ const AudioPlayer = () => {
             <div className="centerAudioControls">
                 <audio
                     ref={audioPlayer}
-                    src="https://songcloud-song-images.s3.us-west-1.amazonaws.com/Cudi+Zone.mp3"
+                    src={currentSongToPlay.currentSong}
 
                     onLoadedMetadata={() => {
                         const seconds = Math.floor(audioPlayer.current.duration)
@@ -106,6 +142,26 @@ const AudioPlayer = () => {
                 <HiVolumeUp className="volumeIcon" />
                 <div className="volumeContainer">
                     <input type="range" defaultValue="100" className="volumeInput" ref={volumeBar} onChange={changeVolume}></input>
+                </div>
+                <div className="audioPlayerSongImageContainer">
+                    <div
+                        style={{
+                            width: "30px", height: "30px",
+                            backgroundImage: `url(${currentSongToPlay.songImage})`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "50% 50%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            marginLeft: "30px"
+                        }}
+                    >
+
+                    </div>
+                </div>
+                <div className="audioPlayerSongArtistAndName">
+                    <div>{currentSongToPlay.artistName}</div>
+                    <div> {currentSongToPlay.songName}</div>
                 </div>
             </div>
         </div >

@@ -6,9 +6,9 @@ const PAUSE_SONG = "currentSong/PAUSE_SONG"
 
 //play song action creator
 
-export const playSong = (songUrl) => ({
+export const playSong = (song) => ({
     type: PLAY_SONG,
-    payload: songUrl
+    payload: song
 })
 
 export const pauseSong = () => ({
@@ -18,10 +18,13 @@ export const pauseSong = () => ({
 /*--------------------------------------------------------------------*/
 
 
-
 const initialState = {
-    currentSong: null,
-    isPlayingSong: false
+    songId: 1,
+    currentSong: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/Cudi+Zone.mp3",
+    songImage: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/kid-cudi-man-on-the-moon-album-cover-art-2.jpeg",
+    isPlayingSong: null,
+    artistName: "Kid Cudi",
+    songName: "Cudi Zone"
 }
 
 const currentSong = (state = initialState, action) => {
@@ -29,8 +32,12 @@ const currentSong = (state = initialState, action) => {
     switch (action.type) {
         case PLAY_SONG:
             let new_state = {
-                currentSong: action.payload,
-                isPlayingSong: true
+                songId: action.payload.songId,
+                currentSong: action.payload.currentSong,
+                songImage: action.payload.songImage,
+                isPlayingSong: true,
+                artistName: action.payload.artistName,
+                songName: action.payload.songName
             }
 
             return new_state
