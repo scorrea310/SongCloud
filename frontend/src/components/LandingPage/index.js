@@ -51,7 +51,6 @@ const LandingPage = () => {
                     <div className="lineBreaker">
 
                     </div>
-                    {/* <div className="helloWorld"> _hello world</div> */}
                 </div>
 
             </div>
