@@ -10,17 +10,18 @@
     align-items: center;
 }
 
-.aboutInfo {
+.devicesContainer {
     height: 400px;
     width: 1239px;
-    background-color: white;
     margin-bottom: 0px;
     margin-top: 50px;
+    display: flex;
+    flex-direction: row;
 }
 
 #reactIcon {
     color: #61DBFB;
-     margin-right: 10px;
+    margin-right: 10px;
 }
 
 #htmlLogo {
@@ -53,7 +54,6 @@
     width:35px;
     height: 35px;
     background-size: cover;
-   
 }
 
 .iconContainer {
@@ -62,7 +62,6 @@
     justify-content: center;
     flex-direction: row;
     align-items: center;
-  
 }
 
 #reduxLogoContainer {
@@ -71,7 +70,6 @@
     padding-top: 20px;
     flex-direction: column;
     justify-content: center;
- 
 }
 
 .githubAndLinkin {
@@ -141,7 +139,58 @@
 }
 
 
+.devicesImage {
+    background-image: url("../../../public/images/never_stop_listening.jpeg");
+    background-repeat: no-repeat;
+    background-size:contain;
+    /* background-size: 100%; */
+    width:70%;
+    height: 100%;
+    background-position: bottom;
+    padding-left: 50px;
+}
 
-/* .logoAndTextContainer.postgress {
-    padding-left: 10px;
-} */
+.listeningText {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    padding-left: 30px;
+    font-size: 30px;
+    flex-direction: column;
+    padding-bottom: 50px;
+}
+
+.coloredUnderline {
+    height: 3px;
+    width: 230px;
+    background-image: linear-gradient(90deg,#7d01a1,#f30 50%,#f50);
+    margin-right: 0px;
+    margin-top: 5px;
+}
+
+.creatorSection {
+    height: 400px;
+    width: 1239px;
+    background-color: black;
+    background-image: url("../../../public/images/sc_landing_header_web_featured_artists@2x-00444712.jpeg");
+    background-size:cover;
+    margin-bottom: 70px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    font-size: 20px;
+    flex-direction: column;
+}
+
+#whatAreYouText {
+    margin-bottom: 25px;
+}
+
+#getOnSoundCloud {
+    margin-bottom: 15px; 
+}

@@ -43,9 +43,6 @@ const LandingGallery = () => {
                 <SongCoverPlayPause song={trav} />
                 <SongCoverPlayPause song={cudiTwo} />
             </div>
-            <div className="discoverSongsSignUp">
-                <SignUpFormModal />
-            </div>
         </div>
     )
 
