@@ -3,6 +3,7 @@ import "./LandingPage.css"
 import LandingGallery from "../LandingGallery"
 import { useHistory } from "react-router-dom"
 import AudioPlayer from "../AudioPlayer"
+import SignUpFormModal from "../SignUpformModal"
 const LandingPage = () => {
 
     const history = useHistory()
@@ -19,47 +20,26 @@ const LandingPage = () => {
         <div className="LandingPage">
             <LandingNavSection />
             <LandingGallery />
-            <div className="aboutInfo">
-                <div className="techUsed"> Technologies Used </div>
-                <div className="iconContainer">
-                    <div className="logoAndTextContainer">
-                        <i className="fab fa-js" id="jsLogo"></i>
-                        <p>Javascript</p>
-                    </div>
-                    <div className="logoAndTextContainer">
-                        <i className="fab fa-react" id="reactIcon"></i>
-                        <p> React </p>
-                    </div>
-                    <div className="logoAndTextContainer postgress" >
-                        <i className="fas fa-database" id="postgres"></i>
-                        <p id="postgressText"> postgres </p>
-                    </div>
-                    <div className="logoAndTextContainer">
-                        <i className="fab fa-html5" id="htmlLogo"></i>
-                        <p> HTML </p>
-                    </div>
-                    <div className="logoAndTextContainer">
-                        <i className="fab fa-css3-alt" id="cssLogo"></i>
-                        <p> CSS </p>
-                    </div>
-                    <div id="reduxLogoContainer">
-                        <div className="reduxLogo"></div>
-                        <p> Redux </p>
-                    </div>
+            <div className="devicesContainer">
+                <div className="devicesImage">
                 </div>
-                <div className="githubAndLinkin">
-                    <div className="lineBreaker">
-
-                    </div>
+                <div className="listeningText">
+                    Listen anywhere
+                    <div className="coloredUnderline"></div>
                 </div>
 
             </div>
-            <div className="githubAndLinkedinContainer">
+            {/* <div className="githubAndLinkedinContainer">
                 <a href="https://www.linkedin.com/in/steve-correa/"><i className="fab fa-linkedin" id="linkedin"></i></a>
                 <a href="https://github.com/scorrea310"><i className="fab fa-github" id="github" ></i></a>
 
             </div>
-            <div id="steveText">Steve Correa</div>
+            <div id="steveText">Steve Correa</div> */}
+            <div className="creatorSection">
+                <p id="getOnSoundCloud">Get on SongCloud to connect with fans and share your sounds.</p>
+                <p id="whatAreYouText"> What are you waiting for?</p>
+                <SignUpFormModal />
+            </div>
         </div>
     )
 }

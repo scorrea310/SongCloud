@@ -1,15 +1,15 @@
 .galleryContainer {
     height: 600px;
     width: 1239px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
-   background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
 }
 .discoverNewSongsText {
     width: 100%;
-    height:200px;
+    height:100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,13 +18,14 @@
 }
 
 .songImagesContainer {
-    width: 90%;
-    height: 100%;
-    background-color: black;
+    width: 85%;
+    height: 70%;
+    /* background: linear-gradient(135deg, rgb(179, 130, 135) 0%, rgb(110, 136, 165) 100%); */
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(135deg, rgb(179, 130, 135) 0%, rgb(110, 136, 165) 100%);
 }
 
 .discoverSongsSignUp {
