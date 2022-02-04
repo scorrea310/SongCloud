@@ -81,8 +81,8 @@
 }
 
 .lineBreaker {
-    width: 90%;
-    height: 150px;
+    width: 95%;
+    height: 50px;
     border-bottom: 1px solid rgb(239, 239, 239);
     display: flex;
     justify-content: center;
@@ -104,10 +104,15 @@
 #linkedin {
     color: #2867B2;
     margin-right: 15px;
+    font-size: 25px;
+    margin-top: 0px;
+    margin-right: 5px;
 }
 #github {
     color: rgb(25, 27, 30);
-
+    font-size: 25px;
+    margin-top: 0px;
+    margin-left: 5px;
 }
 
 .githubAndLinkedinContainer {
@@ -177,7 +182,6 @@
     background-color: black;
     background-image: url("../../../public/images/sc_landing_header_web_featured_artists@2x-00444712.jpeg");
     background-size:cover;
-    margin-bottom: 70px;
     color: white;
     display: flex;
     justify-content: center;
@@ -193,4 +197,37 @@
 
 #getOnSoundCloud {
     margin-bottom: 15px; 
+}
+
+.landingPageFooter {
+    height: 170px; 
+    width: 1239px;
+    background-color: white;
+    /* margin-bottom: 70px; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footerTextContainer {
+    width: 95%;
+    height: 50px;
+    padding-top: 0px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    color: #ccc;
+    display: flex;
+    flex-direction: row;
+}
+
+#imSteveText {
+    font-size: 14px;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+}
+
+.socialsContainer {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
 }

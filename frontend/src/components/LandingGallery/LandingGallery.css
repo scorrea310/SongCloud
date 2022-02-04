@@ -67,3 +67,10 @@
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
 }
 
+.songGalleryContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%
+}
+

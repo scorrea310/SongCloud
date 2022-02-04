@@ -40,6 +40,18 @@ const LandingPage = () => {
                 <p id="whatAreYouText"> What are you waiting for?</p>
                 <SignUpFormModal />
             </div>
+            <div className="landingPageFooter">
+                <div className="lineBreaker"></div>
+                <div className="footerTextContainer">
+                    <p id="imSteveText"> Steve Correa - s.correa@berkeley.edu - </p>
+
+                    <div className="socialsContainer">
+                        <a href="https://www.linkedin.com/in/steve-correa/"><i className="fab fa-linkedin" id="linkedin"></i></a>
+                        <p id="imSteveText">-</p>
+                        <a href="https://github.com/scorrea310"><i className="fab fa-github" id="github" ></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
