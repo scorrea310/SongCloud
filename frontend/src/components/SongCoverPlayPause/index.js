@@ -52,7 +52,6 @@ const SongCoverPlayPause = ({ song }) => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                marginLeft: "50px"
             }}>
             {
                 (() => {
