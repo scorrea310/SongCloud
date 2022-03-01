@@ -16,15 +16,11 @@ const AudioPlayer = () => {
 
     let currentSongToPlay = useSelector(state => state.currentSong);
 
-
     // states
     // const [isPlaying, setIsPlaying] = useState(false)
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0)
     const [volume, setVolume] = useState(1.0)
-
-
-
     //references 
     const audioPlayer = useRef()
     const progressBar = useRef() //reference to progress bar 
@@ -46,47 +42,39 @@ const AudioPlayer = () => {
 
 
     const whilePlaying = () => {
-        progressBar.current.value = audioPlayer.current.currentTime;
-        progressBar.current.style.setProperty("--seek-before-width", `${progressBar.current.value / duration * 100}%`)
-        setCurrentTime(progressBar.current.value)
-        animationRef.current = requestAnimationFrame(whilePlaying)
+        if (currentSongToPlay.isPlayingSong === false) return
+
+        if (currentSongToPlay.isPlayingSong === true) {
+            progressBar.current.value = audioPlayer?.current?.currentTime;
+            progressBar.current.style.setProperty("--seek-before-width", `${progressBar.current.value / duration * 100}%`)
+            setCurrentTime(progressBar.current.value)
+            animationRef.current = requestAnimationFrame(whilePlaying)
+        }
     }
-
-
-
-    let isPlaying;
-    if (currentSongToPlay.isPlayingSong) {
-        isPlaying = true
-        audioPlayer.current.play()
-        animationRef.current = requestAnimationFrame(whilePlaying)
-    } else if (currentSongToPlay.isPlayingSong === false) {
-        isPlaying = false
-        audioPlayer.current.pause()
-        cancelAnimationFrame(animationRef.current)
-    }
-
 
 
 
     const togglePausePlay = () => {
-        const prevValue = isPlaying
-
+        const prevValue = currentSongToPlay.isPlayingSong
 
         if (prevValue) {
             dispatch(pauseSong())
-        } else {
+        } else if (!prevValue) {
             dispatch(playSong(currentSongToPlay))
         }
+    }
 
+    useEffect(() => {
 
-        if (!prevValue) {
-            audioPlayer.current.play()
-            animationRef.current = requestAnimationFrame(whilePlaying)
-        } else {
+        if (currentSongToPlay.isPlayingSong === null || currentSongToPlay.isPlayingSong === false) {
             audioPlayer.current.pause()
             cancelAnimationFrame(animationRef.current)
+        } else {
+            audioPlayer.current.play()
+            animationRef.current = requestAnimationFrame(whilePlaying)
         }
-    }
+
+    }, [currentSongToPlay.isPlayingSong])
 
 
 
@@ -129,7 +117,7 @@ const AudioPlayer = () => {
                     }}></audio>
 
                 <button className="forwardBackward" onClick={backThirty}> <BsArrowLeftShort /> 30</button>
-                <button className="playPause" onClick={togglePausePlay}> {isPlaying ? <FaPause /> : <FaPlay className="playButton" />}</button>
+                <button className="playPause" onClick={togglePausePlay}> {currentSongToPlay.isPlayingSong ? <FaPause /> : <FaPlay className="playButton" />}</button>
                 <button className="forwardBackward" onClick={forwardThirty} > 30 <BsArrowRightShort /> </button>
 
                 <div className="currentTime">{calculateTime(currentTime)}</div>

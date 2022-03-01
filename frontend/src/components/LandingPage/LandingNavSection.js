@@ -4,12 +4,15 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import "./LandingNavSection.css"
 import SignUpFormModal from "../SignUpformModal";
+import { pauseSong } from "../../store/currentSong"
 
 const LandingNavSection = () => {
 
     const dispatch = useDispatch()
 
     const login = (e) => {
+
+        dispatch(pauseSong())
 
         const loginInfo = {
             credential: 'Demo-lition',
