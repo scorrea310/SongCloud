@@ -4,18 +4,17 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { loadUsersSongs } from "../../store/songs";
-
+import { useHistory } from "react-router-dom";
 
 
 const MySongs = () => {
 
     const dispatch = useDispatch();
-
+    const history = useHistory()
 
     let songs = useSelector(state => state.songs);
     const sessionUser = useSelector(state => state.session?.user);
-
-
+    const [songsLoaded, setSongsLoaded] = useState(false)
 
     let valueArray = Object.values(songs);
 
@@ -23,7 +22,7 @@ const MySongs = () => {
 
     useEffect(() => {
 
-        dispatch(loadUsersSongs(sessionUser.id))
+        dispatch(loadUsersSongs(sessionUser.id)).then(() => setSongsLoaded(true))
 
     }, [dispatch])
 
@@ -40,10 +39,15 @@ const MySongs = () => {
     }
 
 
+    if (!songsLoaded) return null;
 
     return (
         <div className={divClassName}>
-            {areThereSongs ? valueArray.map((song) => <PlaySong key={song.url} song={song} />) : <h1> No Songs to Display</h1>}
+            {areThereSongs ? valueArray.map((song) => <PlaySong key={song.url} song={song} />) : <div className="noSongsTextContainer">
+                <h2 style={{ marginTop: "100px", fontFamily: "Interstate,Lucida Grande,Arial,sans-serif" }}> No Songs to Display</h2>
+                <div className="addASongContainer" onClick={() => history.push("/upload")}>Upload a Song</div>
+
+            </div>}
         </div>
     )
 }
