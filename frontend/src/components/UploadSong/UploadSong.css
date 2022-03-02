@@ -6,6 +6,7 @@
     flex-direction: row;
     margin-top: 25px;
     border-radius: 3px;
+    justify-content: center;
 }
 
 .leftImageSection {

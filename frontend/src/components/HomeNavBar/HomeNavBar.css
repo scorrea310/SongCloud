@@ -8,14 +8,16 @@
 
 .middleSectionNav{
     width: 60%;
+    min-width: 1000px;
     height: 46px;
     display: flex;
     flex-direction: row;
+    margin: auto;
     /* justify-content: space-between; */
 }
 
 #navIcon {
-    width: 69px;
+    width: 80px;
     height: 46px;
     display: flex;
     justify-content: center;
@@ -87,7 +89,8 @@
 }
 
 .rightSection {
-    width: 200px;
+    width: 260px;
+    /* background-color: aqua; */
     display: flex;
     flex-direction: row;
 }
@@ -102,7 +105,7 @@
     font-size: 15px;
     width: 44%;
     flex-shrink: 0;
-
+    margin: auto;
 }
 
 .homeButtomLink {
