@@ -11,7 +11,7 @@
     height: 46px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 #navIcon {
@@ -95,10 +95,14 @@
 #songCloud {
     display: flex;
     align-items: center;
+    justify-content: center;
     color: #fff;
     font-family: Interstate,Lucida Grande,Arial,sans-serif;
     font-weight: 100;
     font-size: 15px;
+    width: 44%;
+    flex-shrink: 0;
+
 }
 
 .homeButtomLink {

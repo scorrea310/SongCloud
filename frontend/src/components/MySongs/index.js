@@ -45,7 +45,7 @@ const MySongs = () => {
         <div className={divClassName}>
             {areThereSongs ? valueArray.map((song) => <PlaySong key={song.url} song={song} />) : <div className="noSongsTextContainer">
                 <h2 style={{ marginTop: "100px", fontFamily: "Interstate,Lucida Grande,Arial,sans-serif" }}> No Songs to Display</h2>
-                <div className="addASongContainer" onClick={() => history.push("/upload")}>Upload a Song</div>
+                <div className="addASongButtonMySongs" onClick={() => history.push("/upload")}>Upload a Song</div>
 
             </div>}
         </div>

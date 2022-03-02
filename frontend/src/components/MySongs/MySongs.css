@@ -21,11 +21,11 @@
     align-items: center;
 }
 
-.addASongContainer {
+.addASongButtonMySongs {
     margin-top: 15px;
     font-family: Interstate,Lucida Grande,Arial,sans-serif;
     color: white;
-    width: 150px;
+    width: 125px;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -33,4 +33,5 @@
     height: 43px;
     border-radius: 24px;
     cursor: pointer;
+    font-size: 14px;
 }
