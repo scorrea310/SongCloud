@@ -1,0 +1,61 @@
+.grid-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 175px;
+  height: 175px;
+  max-width: 175px;
+  max-height: 175px;
+  border: 1px solid #e1e3df;
+  border-radius: 3px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #faf9f5;
+  position: relative;
+  text-align: center;
+  margin: 10px;
+}
+
+.grid-block:hover {
+  cursor: pointer;
+  border-color: hsl(357deg 91% 59%)
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+.form-label {
+  padding: 7px 0 0 0;
+  margin: 0;
+}
+
+.grid-block .badge {
+  align-self: flex-start;
+}
+
+.file-upload-icon {
+  font-size: 30px;
+}
+
+.icon-container .form-label {
+  font-weight: 300;
+}
+
+.preview-image {
+  max-width: 175px;
+  max-height: 175px;
+  height: auto;
+  width: 100%;
+}
+
+.file-input {
+  display: none;
+}

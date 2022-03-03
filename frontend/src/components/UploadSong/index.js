@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { createSong } from "../../store/songs";
 import { allSongsDelete } from "../../store/songs";
 import { useHistory } from "react-router-dom";
+import ImageInputWithPreview from "../ImageInputWithPreview";
+
 
 const UpLoadSong = () => {
 
     const history = useHistory()
 
     const [title, setTitle] = useState("");
-    const [image, setImage] = useState(null)
+    const [image, setImage] = useState([])
     const [song, setSong] = useState(null)
     const [errors, setErrors] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
@@ -20,13 +22,21 @@ const UpLoadSong = () => {
 
     let userId = user.id
 
-    let loadingIconAndText = (
+    const loadingIconAndText = (
         <>
             <div>Loading...</div>
             <div className="loading"></div>
         </>
     )
+    const toObjectURL = (file) => URL.createObjectURL(file);
+    const updateImages = (e) => setImage([...image, e.target.files[0]]);
 
+    const handleDelete = (e, i) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const filtered = image.filter((_item, index) => i !== index);
+        setImage(filtered);
+    };
 
     const handleSubmit = async (e) => {
 
@@ -109,18 +119,23 @@ const UpLoadSong = () => {
                     {errors.length > 0 &&
                         errorsDivAndElements}
                     <div className="uploadText">Upload a Song</div>
+                    <label id="title">Title
+                        <input required value={title} className="titleInput" type="text" onChange={(e) => setTitle(e.target.value)} />
+                    </label>
                     <form
                         className="uploadSongForm"
                         onSubmit={handleSubmit}
                     >
-                        <div className="imageBox">
-                            <span>Image</span>
-                            <input className="imageInput" type="file" onChange={addImage} required />
-                        </div>
+
+                        <ImageInputWithPreview
+                            index={0}
+                            src={image.length > 0 ? toObjectURL(image[0]) : null}
+                            onChange={updateImages}
+                            onClick={handleDelete}
+                        />
+
                         <div className="songAndTitleContainer">
-                            <label id="title">Title
-                                <input required value={title} className="titleInput" type="text" onChange={(e) => setTitle(e.target.value)} />
-                            </label>
+                            {isLoaded ? loadingIconAndText : null}
                             <label>Song file:
                                 <input required className="songInput" type="file" onChange={addSong} />
                             </label>
