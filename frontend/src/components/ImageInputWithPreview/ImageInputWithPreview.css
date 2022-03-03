@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 175px;
+  width: 170px;
   height: 175px;
   max-width: 175px;
   max-height: 175px;
@@ -15,12 +15,12 @@
   background-color: #faf9f5;
   position: relative;
   text-align: center;
-  margin: 10px;
+  margin-left: 10px;
 }
 
 .grid-block:hover {
   cursor: pointer;
-  border-color: hsl(357deg 91% 59%)
+  border-color: black
 }
 
 .icon-container {

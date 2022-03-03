@@ -119,9 +119,11 @@ const UpLoadSong = () => {
                     {errors.length > 0 &&
                         errorsDivAndElements}
                     <div className="uploadText">Upload a Song</div>
-                    <label id="title">Title
+                    <div className="titleInputContainerUploadSong">
+                        <div className="titleTextContainerUploadSong"><label id="title">Title </label></div>
                         <input required value={title} className="titleInput" type="text" onChange={(e) => setTitle(e.target.value)} />
-                    </label>
+                    </div>
+
                     <form
                         className="uploadSongForm"
                         onSubmit={handleSubmit}
