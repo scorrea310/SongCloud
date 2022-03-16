@@ -23,6 +23,8 @@ const ImageInputWithPreview = ({
         backgroundImage: `url(${src})`,
     };
 
+
+    console.log(src)
     return (
         <div
             className={`grid-block grid-block-${index}`}

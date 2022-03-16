@@ -11,12 +11,13 @@ const UpLoadSong = () => {
 
     const history = useHistory()
 
-    const [title, setTitle] = useState("");
-    const [image, setImage] = useState([])
+
+    const [image, setImage] = useState(false)
     const [song, setSong] = useState(null)
     const [errors, setErrors] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
-
+    const [title, setTitle] = useState("");
+    const [src, setSrc] = useState(null)
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
 
@@ -28,14 +29,31 @@ const UpLoadSong = () => {
             <div className="loading"></div>
         </>
     )
-    const toObjectURL = (file) => URL.createObjectURL(file);
-    const updateImages = (e) => setImage([...image, e.target.files[0]]);
+
+    const toObjectURL = (file) => {
+        console.log("hjjjj")
+        if (file === null || file === undefined) return
+        return URL.createObjectURL(file)
+    };
+
+    const updateImages = (e) => {
+        e.stopPropagation()
+
+
+
+        if (e.target.files[0] === undefined || e.target.files[0] === null) return
+
+        setImage(e.target.files[0])
+        setSrc(toObjectURL(e.target.files[0]))
+        e.target.value = ''
+
+    };
 
     const handleDelete = (e, i) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const filtered = image.filter((_item, index) => i !== index);
-        setImage(filtered);
+        e.stopPropagation()
+        e.preventDefault()
+        setImage(false);
+        setSrc(null)
     };
 
     const handleSubmit = async (e) => {
@@ -72,7 +90,7 @@ const UpLoadSong = () => {
                 song,
             }
             setTitle("")
-            setImage(null)
+            setImage(false)
             setSong(null)
 
             let newSong = await dispatch(createSong(songInfo))
@@ -94,11 +112,6 @@ const UpLoadSong = () => {
 
     };
 
-    const addImage = (e) => {
-        const file = e.target.files[0];
-        if (file) setImage(file);
-    }
-
     const addSong = (e) => {
         const file = e.target.files[0];
         if (file) setSong(file);
@@ -107,6 +120,13 @@ const UpLoadSong = () => {
     const errorsDivAndElements = (
         <div className="errorsDiv"> {errors.map((error) => <div className="errorLi" key={error}>{error}<br></br></div>)} </div>
     )
+
+    const changeTitle = (e) => {
+        e.stopPropagation()
+        setTitle(e.target.value)
+
+
+    }
 
     return (
         <div className="middleSection">
@@ -119,32 +139,39 @@ const UpLoadSong = () => {
                     {errors.length > 0 &&
                         errorsDivAndElements}
                     <div className="uploadText">Upload a Song</div>
-                    <div className="titleInputContainerUploadSong">
-                        <div className="titleTextContainerUploadSong"><label id="title">Title </label></div>
-                        <input required value={title} className="titleInput" type="text" onChange={(e) => setTitle(e.target.value)} />
-                    </div>
+
 
                     <form
                         className="uploadSongForm"
                         onSubmit={handleSubmit}
                     >
+                        <div className="songCoverAndTitleParentContainer">
+                            <div>
+                                <ImageInputWithPreview
+                                    index={0}
+                                    src={src}
+                                    onChange={updateImages}
+                                    onClick={handleDelete}
+                                />
+                            </div>
+                            <div className="songTitleAndSongFileContainer">
+                                <div className="titleInputContainerUploadSong">
+                                    <div className="titleTextContainerUploadSong"><label id="title">Title </label></div>
+                                    <input required value={title} className="titleInput" type="text" onChange={changeTitle} />
+                                </div>
+                                <div className="songAndTitleContainer">
+                                    {isLoaded ? loadingIconAndText : null}
+                                    <label className="songFileLabel">Song file:</label>
+                                    <input required className="songInput" type="file" accept=".mp3,.mp4" onChange={addSong} />
 
-                        <ImageInputWithPreview
-                            index={0}
-                            src={image.length > 0 ? toObjectURL(image[0]) : null}
-                            onChange={updateImages}
-                            onClick={handleDelete}
-                        />
-
-                        <div className="songAndTitleContainer">
-                            {isLoaded ? loadingIconAndText : null}
-                            <label>Song file:
-                                <input required className="songInput" type="file" onChange={addSong} />
-                            </label>
+                                </div>
+                            </div>
                         </div>
+
+
                         <div className="uploadButtonAndLoadingIcon">
                             {isLoaded ? loadingIconAndText : null}
-                            <button id="uploadSongButton" type="submit">Upload Song</button>
+                            <button id="uploadSongButton" type="submit">upload song</button>
                         </div>
                     </form>
                 </div>
