@@ -66,6 +66,13 @@ const UpLoadSong = () => {
 
         let newErrors = [];
 
+        if (!image) {
+            console.log("no image")
+            newErrors.push("you must submit a song cover.")
+            setErrors(newErrors)
+            return;
+        }
+
         if (imageTypes.test(image.name) === false) {
 
             newErrors.push("Image type can only be .jpg, .jpeg, or .png")
@@ -136,8 +143,7 @@ const UpLoadSong = () => {
             <div className="formSection">
 
                 <div className="formContainer">
-                    {errors.length > 0 &&
-                        errorsDivAndElements}
+
                     <div className="uploadText">Upload a Song</div>
 
 
@@ -173,6 +179,8 @@ const UpLoadSong = () => {
                             {isLoaded ? loadingIconAndText : null}
                             <button id="uploadSongButton" type="submit">upload song</button>
                         </div>
+                        {errors.length > 0 &&
+                            errorsDivAndElements}
                     </form>
                 </div>
             </div>
