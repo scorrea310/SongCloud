@@ -1,10 +1,10 @@
 .middleSection {
     width: 80%;
-    height: 700px;
+    height: 550px;
     background-color: black;
     display: flex;
     flex-direction: row;
-    margin-top: 25px;
+    margin-top: 50px;
     border-radius: 3px;
     justify-content: center;
 }
@@ -27,7 +27,7 @@
 }
 
 .formContainer {
-    height: 600px;
+    height: 500px;
     width: 100%;
     background-color: white;
     display: flex;
@@ -37,7 +37,7 @@
 
 .pianoImage {
     width: 200px;
-    height: 600px;
+    height: 500px;
     background-image: url("../../../public/images/piano\ Image.jpeg");
     background-size: cover;
     background-position: center;
@@ -55,7 +55,7 @@
 
 .micImage { 
     width: 200px;
-    height: 600px;
+    height: 500px;
     background-image: url("../../../public/images/mic\ Image.jpeg");
     background-size: cover;
     background-position:center;
