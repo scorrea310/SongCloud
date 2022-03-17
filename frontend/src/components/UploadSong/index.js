@@ -5,7 +5,8 @@ import { createSong } from "../../store/songs";
 import { allSongsDelete } from "../../store/songs";
 import { useHistory } from "react-router-dom";
 import ImageInputWithPreview from "../ImageInputWithPreview";
-
+import { Bars } from 'react-loader-spinner'
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const UpLoadSong = () => {
 
@@ -166,7 +167,6 @@ const UpLoadSong = () => {
                                     <input required value={title} className="titleInput" type="text" onChange={changeTitle} />
                                 </div>
                                 <div className="songAndTitleContainer">
-                                    {isLoaded ? loadingIconAndText : null}
                                     <label className="songFileLabel">Song file:</label>
                                     <input required className="songInput" type="file" accept=".mp3,.mp4" onChange={addSong} />
 
@@ -176,7 +176,7 @@ const UpLoadSong = () => {
 
 
                         <div className="uploadButtonAndLoadingIcon">
-                            {isLoaded ? loadingIconAndText : null}
+                            {isLoaded ? <div style={{ marginLeft: "0px" }}><Bars color="#f50" height={50} width={50} /></div> : null}
                             <button id="uploadSongButton" type="submit">upload song</button>
                         </div>
                         {errors.length > 0 &&

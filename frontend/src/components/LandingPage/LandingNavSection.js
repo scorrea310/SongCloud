@@ -12,8 +12,6 @@ const LandingNavSection = () => {
 
     const login = (e) => {
 
-        dispatch(pauseSong())
-
         const loginInfo = {
             credential: 'Demo-lition',
             password: 'password'

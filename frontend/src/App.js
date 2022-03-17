@@ -32,6 +32,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <AudioPlayer />
       {isLoaded && sessionLinks && (
         <Switch>
           <Route exact path="/">
@@ -44,6 +45,7 @@ function App() {
             <UpLoadSong />
           </Route>
         </Switch>
+
       )}
 
     </>

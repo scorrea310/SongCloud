@@ -31,7 +31,6 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <>
                 <LandingPage />
-                <AudioPlayer />
             </>
         );
     }
