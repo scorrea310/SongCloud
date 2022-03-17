@@ -39,7 +39,11 @@ const MySongs = () => {
     }
 
 
-    if (!songsLoaded) return null;
+    if (!songsLoaded) {
+        return (
+            <div style={{ width: "57%", minHeight: "100vh" }}></div>
+        )
+    };
 
     return (
         <div className={divClassName}>

@@ -11,7 +11,7 @@ import { playSong } from "../../store/currentSong"
 
 
 
-const SongCoverPlayPause = ({ song }) => {
+const SongCoverPlayPause = ({ song, songTitlePresent }) => {
 
     const dispatch = useDispatch();
     const [isHovered, setIsHovered] = useState(true)
@@ -38,32 +38,39 @@ const SongCoverPlayPause = ({ song }) => {
 
 
 
+    console.log(song)
 
 
     return (
-        <div
-            onMouseEnter={() => setIsHovered(true)}
-            // onMouseLeave={() => setIsHovered(false)}
-            style={{
-                width: "200px", height: "200px",
-                backgroundImage: `url(${song.imageUrl})`,
-                backgroundSize: "cover",
-                backgroundPosition: "50% 50%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-            }}>
-            {
-                (() => {
-                    if (isHovered) {
-                        if (isPlaying && song.songId === currentSongToPlay.songId) {
-                            return <button className="isPlaying" onClick={() => dispatch(pauseSong())}> <FaPause /> </button>
-                        } else {
-                            return <button className="isPaused" onClick={() => dispatch(playSong(songToPlay))}> <FaPlay /> </button>
+        <div className="songPlayPauseCoverAndTitleParentContainer">
+            <div
+                onMouseEnter={() => setIsHovered(true)}
+                // onMouseLeave={() => setIsHovered(false)}
+                style={{
+                    width: "200px", height: "200px",
+                    backgroundImage: `url(${song.imageUrl})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "50% 50%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}>
+                {
+                    (() => {
+                        if (isHovered) {
+                            if (isPlaying && song.songId === currentSongToPlay.songId) {
+                                return <button className="isPlaying" onClick={() => dispatch(pauseSong())}> <FaPause /> </button>
+                            } else {
+                                return <button className="isPaused" onClick={() => dispatch(playSong(songToPlay))}> <FaPlay /> </button>
+                            }
                         }
-                    }
-                })()
-            }
+                    })()
+                }
+            </div>
+            {songTitlePresent && <>
+                <div className="songtitleSongCoverPlayPause">{song.title}</div>
+                <div className="songArtistSongCoverPlayPause">{song.artistName}</div>
+            </>}
         </div>
     )
 }

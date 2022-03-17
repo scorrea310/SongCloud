@@ -40,9 +40,9 @@ const LandingGallery = () => {
             <div className="discoverNewSongsText">Discover New Songs</div>
             <div className="songImagesContainer">
                 <div className="songGalleryContainer">
-                    <SongCoverPlayPause song={cudi} />
-                    <SongCoverPlayPause song={trav} />
-                    <SongCoverPlayPause song={cudiTwo} />
+                    <SongCoverPlayPause songTitlePresent={true} song={cudi} />
+                    <SongCoverPlayPause songTitlePresent={true} song={trav} />
+                    <SongCoverPlayPause songTitlePresent={true} song={cudiTwo} />
                 </div>
             </div>
         </div>

@@ -80,7 +80,7 @@ const Home = () => {
 
     return (
         <div className="artistsContainer">
-            <div className="selectArtistContainer">
+            {/* <div className="selectArtistContainer">
                 <div className="chooseArtistContainer">
                     <div className="selectArtistText"> Select an Artist</div>
                     <div className="artistContainer">
@@ -94,7 +94,7 @@ const Home = () => {
                 {selectedArtist === "Kid Cudi" && cudiSongs.map((song) => <PlayArtistSong key={song.imageUrl} song={song} />)}
                 {selectedArtist === "Travis Scott" && travisSongs.map((song) => <PlayArtistSong key={song.imageUrl} song={song} />)}
                 {selectedArtist === "Kanye West" && kanyeSongs.map((song) => <PlayArtistSong key={song.imageUrl} song={song} />)}
-            </div>
+            </div> */}
 
         </div>
     )
