@@ -14,7 +14,7 @@ import { playSong } from "../../store/currentSong"
 const SongCoverPlayPause = ({ song }) => {
 
     const dispatch = useDispatch();
-
+    const [isHovered, setIsHovered] = useState(true)
 
     let currentSongToPlay = useSelector(state => state.currentSong);
 
@@ -36,14 +36,14 @@ const SongCoverPlayPause = ({ song }) => {
     }
 
 
-    const [isHovered, setIsHovered] = useState(false)
+
 
 
 
     return (
         <div
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            // onMouseLeave={() => setIsHovered(false)}
             style={{
                 width: "200px", height: "200px",
                 backgroundImage: `url(${song.imageUrl})`,

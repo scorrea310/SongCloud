@@ -1,6 +1,7 @@
 import "./PlaySong.css"
 import EditSongFormModal from '../EditSongModal'
 import { useEffect, useState } from "react"
+import SongCoverPlayPause from "../SongCoverPlayPause"
 
 const PlaySong = ({ song }) => {
 
@@ -16,11 +17,13 @@ const PlaySong = ({ song }) => {
                 </div>
                 <div className='songTitle'> {song.title}</div>
                 <div className='songImage'>
-                    <img className='songImagePic' src={`${song.imageUrl}`}></img>
+                    {/* <img alt="song cover" className='songImagePic' src={`${song.imageUrl}`}></img> */}
+                    <SongCoverPlayPause song={song} />
                 </div>
-                <div className='audioContainer'>
+
+                {/* <div className='audioContainer'>
                     <audio src={`${song.url}`} preload="auto" controls className='audioElement'></audio>
-                </div>
+                </div> */}
             </div>
         )
     } else {

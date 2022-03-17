@@ -29,37 +29,37 @@
   width: 400px;
 }
 .deleteSongButton {
-    width: 60px;
+    width: 45.848px;
     background: none;
     border: 1px solid black;
     border-radius: 3px;
     color: black;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-    font-size: 13px;
+    font-size: 10px;
     cursor: pointer;
     text-decoration: none;
     margin-left: 15px;
     margin-right: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
     margin-top: 10px;
     height: 25px;
 }
 
 .editSongButton { 
-    width: 70px;
+    width: fit-content;
     background: none;
     border: 1px solid black;
     border-radius: 3px;
     color: black;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-    font-size: 13px;
+    font-size: 10px;
     cursor: pointer;
     text-decoration: none;
     margin-left: 15px;
     margin-right: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
     margin-top: 10px;
     height: 25px;
 }
