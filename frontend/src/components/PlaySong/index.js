@@ -9,6 +9,8 @@ const PlaySong = ({ song }) => {
 
     let songItem;
 
+    console.log(song)
+
     if (song) {
         songItem = (
             <div className='SongContainer'>

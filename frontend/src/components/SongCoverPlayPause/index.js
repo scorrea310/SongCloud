@@ -27,13 +27,15 @@ const SongCoverPlayPause = ({ song, songTitlePresent }) => {
     }
 
     let songToPlay = {
-        songId: song.songId,
+        songId: song.songId ? song.songId : song.id,
         currentSong: song.url,
         songImage: song.imageUrl,
         isPlayingSong: false,
-        artistName: song.artistName,
+        artistName: song.artistName ? song.artistName : song.User?.username,
         songName: song.title
     }
+
+    console.log(song, "111111111")
 
     return (
         <div className="songPlayPauseCoverAndTitleParentContainer">
@@ -52,7 +54,7 @@ const SongCoverPlayPause = ({ song, songTitlePresent }) => {
                 {
                     (() => {
                         if (isHovered) {
-                            if (isPlaying && song.songId === currentSongToPlay.songId) {
+                            if (isPlaying && (song.songId === currentSongToPlay.songId || song.id === currentSongToPlay.songId)) {
                                 return <button className="isPlaying" onClick={() => dispatch(pauseSong())}> <FaPause /> </button>
                             } else {
                                 return <button className="isPaused" onClick={() => dispatch(playSong(songToPlay))}> <FaPlay /> </button>

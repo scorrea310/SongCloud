@@ -1,6 +1,7 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
 const { Song } = require('../../db/models');
+const { User } = require('../../db/models')
 const { multipleMulterUpload, singlePublicFileUpload } = require("../../awsS3")
 
 const { check } = require('express-validator');
@@ -66,7 +67,7 @@ router.put("/:id", multipleMulterUpload("files"), asyncHandler(async (req, res) 
     }
 
 
-    const song = await Song.updateSong({ id: +id, url, title, imageUrl });
+    const song = await Song.updateSong({ id: +id, url, title, imageUrl, User });
 
     return res.json(song);
 
@@ -101,8 +102,7 @@ router.get("/:id", asyncHandler(async (req, res) => {
 
 
 
-    const songs = await Song.getUsersSongs(idOfUser)
-
+    const songs = await Song.getUsersSongs(idOfUser, User)
 
 
     return res.json(songs);

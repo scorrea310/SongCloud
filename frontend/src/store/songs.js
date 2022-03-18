@@ -101,6 +101,9 @@ export const updateSong = (songInfo) => async (dispatch) => {
 
     const data = await res.json()
 
+    data.artistName = data.User.username
+
+    console.log(data, "skdbvksdvbksdvbskdjvbksjd")
 
     dispatch(setSong(data))
 
@@ -137,7 +140,11 @@ export const loadUsersSongs = (id) => async (dispatch) => {
 
         const data = await res.json()
 
+        for (let i = 0; i < data.length; i++) {
+            data[i].artistName = data[i].User.username
+        }
 
+        console.log(data, "--------")
 
         dispatch(loadSongsAction(data, id))
 

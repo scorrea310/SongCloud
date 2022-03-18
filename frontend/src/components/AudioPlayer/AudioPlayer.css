@@ -49,25 +49,28 @@ color: var(--primary);
 
 .duration {
     margin-left: 10px;
-     min-width: fit-content;
+    min-width: fit-content;
+    font-size: 12px;
 }
 
 .currentTime {
     margin-left: 25px;
     margin-right: 10px;
     min-width: fit-content;
+    color: #f50;
+    font-size: 12px;
 }
 
 .progressBar {
-   --seek-before-width: 0;
-   width: 400px;
-   height: 1px;
-   background: var(--primary);
-   display: flex;
-   align-items: center;
-   background-color: var(--primary);
-   -webkit-appearance: none;
-   cursor: pointer;
+    --seek-before-width: 0;
+    width: 400px;
+    height: 1px;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    background-color: var(--primary);
+    -webkit-appearance: none;
+    cursor: pointer;
 }
 
 .progressBar::-webkit-slider-thumb{
@@ -75,7 +78,7 @@ color: var(--primary);
     color: red;
     border-radius: 50%;
     background-color: var(--primary);
-     -webkit-appearance: none;
+    -webkit-appearance: none;
     border: none;
     height: 13px;
     width: 13px;
@@ -85,8 +88,8 @@ color: var(--primary);
 }
 
 .progressBar::-webkit-slider-runnable-track {
-   background: var(--primary); 
-   height: 1px;
+    background: var(--primary); 
+    height: 1px;
 }
 
 .centerAudioControls {
@@ -142,4 +145,14 @@ color: var(--primary);
     margin-left: 20px;
 }
 
+.artistNameTextAudioPlayer {
+        font-size: 12px;
+        color: #666;
+        width:fit-content
+}
+
+.songNameTextAudioPlayer{
+    width: 150px;
+    font-size: 12px;
+}
 
