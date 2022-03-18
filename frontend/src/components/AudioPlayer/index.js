@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { pauseSong } from "../../store/currentSong"
 import { playSong } from "../../store/currentSong"
+import { useCallback } from 'react'
 
 const AudioPlayer = () => {
 
@@ -41,7 +42,7 @@ const AudioPlayer = () => {
 
 
 
-    const whilePlaying = () => {
+    const whilePlaying = useCallback(() => {
         if (currentSongToPlay.isPlayingSong === false) return
 
         if (currentSongToPlay.isPlayingSong === true) {
@@ -50,7 +51,7 @@ const AudioPlayer = () => {
             setCurrentTime(progressBar.current.value)
             animationRef.current = requestAnimationFrame(whilePlaying)
         }
-    }
+    }, [currentSongToPlay.isPlayingSong, duration])
 
 
 
@@ -74,7 +75,7 @@ const AudioPlayer = () => {
             animationRef.current = requestAnimationFrame(whilePlaying)
         }
 
-    }, [currentSongToPlay.isPlayingSong])
+    }, [currentSongToPlay.isPlayingSong, whilePlaying])
 
 
 
@@ -148,8 +149,8 @@ const AudioPlayer = () => {
                     </div>
                 </div>
                 <div className="audioPlayerSongArtistAndName">
-                    <div>{currentSongToPlay.artistName}</div>
-                    <div> {currentSongToPlay.songName}</div>
+                    <div className="artistNameTextAudioPlayer">{currentSongToPlay.artistName}</div>
+                    <div className="songNameTextAudioPlayer"> {currentSongToPlay.songName}</div>
                 </div>
             </div>
         </div >

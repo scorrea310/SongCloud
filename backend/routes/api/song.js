@@ -91,12 +91,11 @@ router.delete("/:id", asyncHandler(async (req, res) => {
 }))
 
 
-
 router.get("/:id", asyncHandler(async (req, res) => {
 
     const { id } = req.params
 
-    
+
 
     const idOfUser = +id
 
@@ -104,7 +103,7 @@ router.get("/:id", asyncHandler(async (req, res) => {
 
     const songs = await Song.getUsersSongs(idOfUser)
 
-    
+
 
     return res.json(songs);
 

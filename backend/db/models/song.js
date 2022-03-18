@@ -81,7 +81,6 @@ module.exports = (sequelize, DataTypes) => {
 
   Song.getUsersSongs = async function (idOfUser) {
 
-   
     return Song.findAll({
       where: {
         userId: idOfUser,

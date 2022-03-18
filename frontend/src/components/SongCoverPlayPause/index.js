@@ -35,12 +35,6 @@ const SongCoverPlayPause = ({ song, songTitlePresent }) => {
         songName: song.title
     }
 
-
-
-
-    console.log(song)
-
-
     return (
         <div className="songPlayPauseCoverAndTitleParentContainer">
             <div

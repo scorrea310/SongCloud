@@ -93,6 +93,7 @@
     /* background-color: aqua; */
     display: flex;
     flex-direction: row;
+    border-right: 1px solid black;
 }
 
 #songCloud {

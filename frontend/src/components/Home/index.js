@@ -79,24 +79,11 @@ const Home = () => {
 
 
     return (
-        <div className="artistsContainer">
-            {/* <div className="selectArtistContainer">
-                <div className="chooseArtistContainer">
-                    <div className="selectArtistText"> Select an Artist</div>
-                    <div className="artistContainer">
-                        <div className={kidCudiClassName} onClick={() => setSelectedArtist("Kid Cudi")}> Kid Cudi</div>
-                        <div className={travisScottClassName} onClick={() => setSelectedArtist("Travis Scott")}>Travis Scott</div>
-                        <div className={kanyeWestClassName} onClick={() => setSelectedArtist("Kanye West")}>Kanye West</div>
-                    </div>
-                </div>
+        <div className="allSongsMainContentBackground">
+            <div className="artistsContainer">
             </div>
-            <div className="songsContainer">
-                {selectedArtist === "Kid Cudi" && cudiSongs.map((song) => <PlayArtistSong key={song.imageUrl} song={song} />)}
-                {selectedArtist === "Travis Scott" && travisSongs.map((song) => <PlayArtistSong key={song.imageUrl} song={song} />)}
-                {selectedArtist === "Kanye West" && kanyeSongs.map((song) => <PlayArtistSong key={song.imageUrl} song={song} />)}
-            </div> */}
-
         </div>
+
     )
 }
 

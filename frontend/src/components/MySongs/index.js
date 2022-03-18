@@ -24,7 +24,7 @@ const MySongs = () => {
 
         dispatch(loadUsersSongs(sessionUser.id)).then(() => setSongsLoaded(true))
 
-    }, [dispatch])
+    }, [dispatch, sessionUser.id])
 
 
 
@@ -46,12 +46,14 @@ const MySongs = () => {
     };
 
     return (
-        <div className={divClassName}>
-            {areThereSongs ? valueArray.map((song) => <PlaySong key={song.url} song={song} />) : <div className="noSongsTextContainer">
-                <h2 style={{ marginTop: "100px", fontFamily: "Interstate,Lucida Grande,Arial,sans-serif" }}> No Songs to Display</h2>
-                <div className="addASongButtonMySongs" onClick={() => history.push("/upload")}>Upload a Song</div>
+        <div className="mySongsMainContentBackground">
+            <div className={divClassName}>
+                {areThereSongs ? valueArray.map((song) => <PlaySong key={song.url} song={song} />) : <div className="noSongsTextContainer">
+                    <h2 style={{ marginTop: "100px", fontFamily: "Interstate,Lucida Grande,Arial,sans-serif" }}> No Songs to Display</h2>
+                    <div className="addASongButtonMySongs" onClick={() => history.push("/upload")}>Upload a Song</div>
 
-            </div>}
+                </div>}
+            </div>
         </div>
     )
 }
