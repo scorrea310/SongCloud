@@ -109,6 +109,30 @@ router.get("/:id", asyncHandler(async (req, res) => {
 
 }))
 
+router.get("", asyncHandler(async (req, res) => {
+    /*
+    GET /api/songs (GETS all Songs)
+    */
+    let songsByArtistname = {};
+
+    let allSongs = await Song.findAll({
+        include: {
+            model: User
+        }
+    });
+
+    for (let i = 0; i < allSongs.length; i++) {
+        if (songsByArtistname[allSongs[i].User.username] !== undefined) {
+            songsByArtistname[allSongs[i].User.username].push(allSongs[i])
+        } else {
+            songsByArtistname[allSongs[i].User.username] = [allSongs[i]]
+        }
+
+    }
+
+    return res.json(songsByArtistname)
+}))
+
 
 
 

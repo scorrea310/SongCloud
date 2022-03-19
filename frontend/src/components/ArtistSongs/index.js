@@ -1,12 +1,10 @@
-
-
-
-
-const ArtistSongs = () => {
+const ArtistSongs = ({ songs }) => {
 
 
     return (
-        null
+        <div className="artistSongsComponentContainer">
+
+        </div>
     )
 }
 

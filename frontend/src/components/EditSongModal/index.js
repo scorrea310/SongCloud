@@ -163,7 +163,7 @@ function EditSongFormModal({ song }) {
                                 <input value={title} className="titleInput" type="text" onChange={(e) => setTitle(e.target.value)} />
                             </label>
                             <label>Song file:
-                                <input className="songInput" type="file" onChange={addSong} />
+                                <input accept=".mp3,.mp4" className="songInput" type="file" onChange={addSong} />
                             </label>
                         </div>
 
