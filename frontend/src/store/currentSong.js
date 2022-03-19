@@ -1,6 +1,6 @@
 const PLAY_SONG = "currentSong/PLAY_SONG"
 const PAUSE_SONG = "currentSong/PAUSE_SONG"
-
+const SET_SONG = "currentSong/SET_SONG"
 /*--------------------------------------------------------------------*/
 // ACTION CREATORS
 
@@ -13,6 +13,11 @@ export const playSong = (song) => ({
 
 export const pauseSong = () => ({
     type: PAUSE_SONG
+})
+
+export const setCurrentSong = (newCurrentSong) => ({
+    type: SET_SONG,
+    payload: newCurrentSong
 })
 
 /*--------------------------------------------------------------------*/
@@ -50,6 +55,9 @@ const currentSong = (state = initialState, action) => {
 
             return new_state_again
 
+        case SET_SONG:
+
+            return action.payload
         default:
             return state
     }

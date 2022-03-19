@@ -2,13 +2,13 @@ import PlaySong from "../PlaySong";
 import "./MySongs.css"
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { loadUsersSongs } from "../../store/songs";
 import { useHistory } from "react-router-dom";
 
 
 const MySongs = () => {
-
+    const isMounted = useRef(true)
     const dispatch = useDispatch();
     const history = useHistory()
 
@@ -22,10 +22,16 @@ const MySongs = () => {
 
     useEffect(() => {
 
-        dispatch(loadUsersSongs(sessionUser.id)).then(() => setSongsLoaded(true))
+        if (isMounted) {
+            dispatch(loadUsersSongs(sessionUser.id)).then(() => setSongsLoaded(true))
+        }
+
+
+        return (() => {
+            isMounted.current = false
+        })
 
     }, [dispatch, sessionUser.id])
-
 
 
     let divClassName;

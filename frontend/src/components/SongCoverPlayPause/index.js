@@ -7,17 +7,12 @@ import { useDispatch } from "react-redux";
 import { pauseSong } from "../../store/currentSong"
 import { playSong } from "../../store/currentSong"
 
-
-
-
-
 const SongCoverPlayPause = ({ song, songTitlePresent }) => {
 
     const dispatch = useDispatch();
     const [isHovered, setIsHovered] = useState(true)
 
     let currentSongToPlay = useSelector(state => state.currentSong);
-
 
     let isPlaying;
     if (currentSongToPlay.isPlayingSong) {
@@ -35,7 +30,7 @@ const SongCoverPlayPause = ({ song, songTitlePresent }) => {
         songName: song.title
     }
 
-    console.log(song, "111111111")
+
 
     return (
         <div className="songPlayPauseCoverAndTitleParentContainer">

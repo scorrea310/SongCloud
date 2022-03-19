@@ -1,5 +1,5 @@
 import { Modal } from "../../context/Modal";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./EditModal.css"
 import { useDispatch, useSelector } from "react-redux";
 import { updateSong } from "../../store/songs";
@@ -7,22 +7,40 @@ import { useHistory } from "react-router-dom";
 import { deleteSongThunk } from "../../store/songs";
 import ImageInputWithPreview from "../ImageInputWithPreview";
 import { Bars } from 'react-loader-spinner'
+import { pauseSong } from "../../store/currentSong"
+import { playSong } from "../../store/currentSong"
+import { setCurrentSong } from "../../store/currentSong";
+import { useEffect } from "react";
 
 function EditSongFormModal({ song }) {
-    const history = useHistory()
+    const isMounted = useRef(true)
     const dispatch = useDispatch();
+    let currentSongPlaying = useSelector(state => state.currentSong);
     const [showModal, setShowModal] = useState(false);
 
-    const [title, setTitle] = useState(song.title);
-    const [image, setImage] = useState(song.imageUrl)
-    const [newSong, setNewSong] = useState(song.url)
+
+    const [title, setTitle] = useState(null);
+    const [image, setImage] = useState(null);
+    const [newSong, setNewSong] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
     const [uploadingInProgress, setUploadingInProgress] = useState(false)
-    const [src, setSrc] = useState(null)
+    const [src, setSrc] = useState(song.imageUrl)
+
+    useEffect(() => {
+        if (isMounted) {
+            setTitle(song.title)
+            setImage(song.imageUrl)
+        }
+
+        return (() => {
+            isMounted.current = false
+        })
+    }, [song]);
 
     const addSong = (e) => {
         const file = e.target.files[0];
         if (file) setNewSong(file);
+        return;
     }
 
     const toObjectURL = (file) => {
@@ -42,6 +60,9 @@ function EditSongFormModal({ song }) {
         e.target.value = ''
     };
 
+    // useEffect(() => {
+
+    // })
 
     /*
     -make handleSubmit function for Form submission.
@@ -52,6 +73,10 @@ function EditSongFormModal({ song }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // if (currentSongPlaying.songId === song.id) {
+        //     dispatch(pauseSong())
+        // }
 
         setUploadingInProgress(true)
         if (image === null) {
@@ -72,14 +97,32 @@ function EditSongFormModal({ song }) {
             newSong
         }
 
-        // setTitle("")
-        // setImage(null)
-        // setNewSong(null)
+        await dispatch(updateSong(songInfo)).then(async (updatedSong) => {
 
-        await dispatch(updateSong(songInfo)).then(() => {
-            setUploadingInProgress(false)
-            setShowModal(false)
+
+
+            if (currentSongPlaying.songId === song.id) {
+
+                const newCurrentSong = {
+                    artistName: updatedSong.artistName,
+                    currentSong: updatedSong.url,
+                    isPlayingSong: false,
+                    songId: updatedSong.id,
+                    songImage: updatedSong.imageUrl,
+                    songName: updatedSong.title
+                }
+                // setUploadingInProgress(false)
+                dispatch(setCurrentSong(newCurrentSong))
+                // setShowModal(false)
+            }
+
+
+            // setUploadingInProgress(false)
+
+            // setShowModal(true)
         })
+
+        // setShowModal(true)
 
     };
 
@@ -96,7 +139,6 @@ function EditSongFormModal({ song }) {
         setSrc(null)
     };
 
-
     return (
         <>
             <button className="deleteSongButton" onClick={handleDelete} > Delete</button>
@@ -110,11 +152,6 @@ function EditSongFormModal({ song }) {
                         <div>
                             <div id="editSongText">Edit Song</div>
                         </div>
-
-                        {/* <div className="newImage">
-                            <span>Image</span>
-                            <input className="imageInput" type="file" onChange={addImage} />
-                        </div> */}
                         <ImageInputWithPreview
                             index={0}
                             src={src}
