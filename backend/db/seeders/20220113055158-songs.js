@@ -58,7 +58,14 @@ module.exports = {
         albumId: null,
         url: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/Kanye+West+-+Welcome+To+Heartbreak+ft.+Kid+Cudi.mp3",
         title: "Welcome to Heartbreak",
-        imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/graduation.jpeg"
+        imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/808s.jpg"
+      },
+      {
+        userId: 5,
+        albumId: null,
+        url: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/Waves.mp3",
+        title: "Waves",
+        imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/TLOP.jpeg"
       },
       {
         userId: 5,
@@ -102,6 +109,27 @@ module.exports = {
         title: "MAFIA",
         imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/Travis-Scott-Escape-Plan-1636116865.jpeg"
       },
+      {
+        userId: 6,
+        albumId: null,
+        url: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/way+back.mp3",
+        title: "way back",
+        imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/trviscover.jpg"
+      },
+      {
+        userId: 6,
+        albumId: null,
+        url: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/THE+SCOTTS%2C+Travis+Scott%2C+Kid+Cudi+-+THE+SCOTTS+(Audio).mp3",
+        title: "THE SCOTTS",
+        imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/the+scottscover.jpeg"
+      },
+      {
+        userId: 6,
+        albumId: null,
+        url: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/JACKBOYS%2C+Travis+Scott+-+OUT+WEST+(Audio)+ft.+Young+Thug.mp3",
+        title: "OUT WEST",
+        imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/jackboys.png"
+      }
 
     ], {});
 
