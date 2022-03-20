@@ -13,7 +13,7 @@ const LandingNavSection = () => {
     const login = (e) => {
 
         const loginInfo = {
-            credential: 'Demo-lition',
+            credential: 'Demo Artist',
             password: 'password'
         }
 

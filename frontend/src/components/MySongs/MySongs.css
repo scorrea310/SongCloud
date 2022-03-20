@@ -10,12 +10,12 @@
 }
 
 .noSongs {
-    width: 57%;
+    width: 1000px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f2f2f2;
+    background-color: white;
 }
 .noSongsTextContainer {
     display: flex;

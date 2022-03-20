@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { pauseSong } from "../../store/currentSong"
 import { playSong } from "../../store/currentSong"
 
-const SongCoverPlayPause = ({ song, songTitlePresent }) => {
+const SongCoverPlayPause = ({ song, songTitleAndArtistNamePresent, songTitlePresent }) => {
 
     const dispatch = useDispatch();
     const [isHovered, setIsHovered] = useState(true)
@@ -58,10 +58,15 @@ const SongCoverPlayPause = ({ song, songTitlePresent }) => {
                     })()
                 }
             </div>
+            {songTitleAndArtistNamePresent && <>
+                <div className="songtitleSongCoverPlayPause">{song.title}</div>
+                <div className="songArtistSongCoverPlayPause">{song.artistName !== undefined ? song.artistName : song.User.username}</div>
+            </>}
+
             {songTitlePresent && <>
                 <div className="songtitleSongCoverPlayPause">{song.title}</div>
-                <div className="songArtistSongCoverPlayPause">{song.artistName}</div>
             </>}
+
         </div>
     )
 }

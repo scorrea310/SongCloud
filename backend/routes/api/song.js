@@ -121,16 +121,20 @@ router.get("", asyncHandler(async (req, res) => {
         }
     });
 
-    // for (let i = 0; i < allSongs.length; i++) {
-    //     if (songsByArtistname[allSongs[i].User.username] !== undefined) {
-    //         songsByArtistname[allSongs[i].User.username].push(allSongs[i])
-    //     } else {
-    //         songsByArtistname[allSongs[i].User.username] = [allSongs[i]]
-    //     }
+    for (let i = 0; i < allSongs.length; i++) {
 
-    // }
+        if (songsByArtistname[allSongs[i].userId] !== undefined) {
+            songsByArtistname[allSongs[i].userId].songs.push(allSongs[i])
+        } else {
+            songsByArtistname[allSongs[i].userId] = {
+                artistName: allSongs[i].User.username,
+                songs: [allSongs[i]]
+            }
+        }
 
-    return res.json(allSongs)
+    }
+
+    return res.json(songsByArtistname)
 }))
 
 
