@@ -21,7 +21,7 @@ const Home = () => {
 
     if (!isLoaded) {
         return (
-            <div style={{ width: "57%", minHeight: "100vh" }}></div>
+            <div style={{ width: "100vh", height: "1261px" }}></div>
         )
     }
 
@@ -30,7 +30,6 @@ const Home = () => {
     return (
         <div className="allSongsMainContentBackground">
             <div className="artistsContainer">
-
                 {allSongObjects.map((artist) => {
                     return <ArtistSongs artist={artist} key={artist.artistName} />
                 })}

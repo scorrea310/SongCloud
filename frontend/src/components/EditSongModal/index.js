@@ -16,8 +16,8 @@ function EditSongFormModal({ song }) {
     const isMounted = useRef(true)
     const dispatch = useDispatch();
     let currentSongPlaying = useSelector(state => state.currentSong);
-    const [showModal, setShowModal] = useState(false);
-
+    const [showEditModal, setShowEditModal] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
 
     const [title, setTitle] = useState(null);
     const [image, setImage] = useState(null);
@@ -61,10 +61,6 @@ function EditSongFormModal({ song }) {
         setSrc(toObjectURL(e.target.files[0]))
         e.target.value = ''
     };
-
-    // useEffect(() => {
-
-    // })
 
     /*
     -make handleSubmit function for Form submission.
@@ -115,19 +111,35 @@ function EditSongFormModal({ song }) {
                     songImage: updatedSong.imageUrl,
                     songName: updatedSong.title
                 }
-
+                setShowEditModal(false)
                 dispatch(setCurrentSong(newCurrentSong))
 
             }
-            setShowModal(false)
+
         })
 
     };
 
 
     const handleDelete = async (e) => {
+
+        let resetCurrentSongState = {
+            songId: 1,
+            currentSong: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/Cudi+Zone.mp3",
+            songImage: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/kid-cudi-man-on-the-moon-album-cover-art-2.jpeg",
+            isPlayingSong: null,
+            artistName: "Kid Cudi",
+            songName: "Cudi Zone"
+        }
+
         e.preventDefault()
+
+        if (currentSongPlaying.songId === song.id) {
+            await dispatch(setCurrentSong(resetCurrentSongState))
+        }
         let deleteSong = await dispatch(deleteSongThunk(song.id))
+
+
     }
 
     const handleDeleteImage = (e, i) => {
@@ -139,10 +151,21 @@ function EditSongFormModal({ song }) {
 
     return (
         <>
-            <button className="deleteSongButton" onClick={handleDelete} > Delete</button>
-            <button className="editSongButton" onClick={() => setShowModal(true)}>Edit Song</button>
-            {showModal && (
-                <Modal editForm={true} onClose={() => setShowModal(false)}>
+            <button className="deleteSongButton" onClick={() => setShowDeleteModal(true)} > Delete</button>
+            {showDeleteModal && (
+                <Modal editForm={true} onClose={() => setShowDeleteModal(false)}>
+                    <div className="deleteSongModalMainContent">
+                        <div className="areYouSureDeleteTextContainer">Are you sure you want to delete this Song? This action cannot be undone.</div>
+                        <div className="deleteAndCancelSongButtonContainer">
+                            <div className="confirmDeleteSongbutton" onClick={handleDelete}>Delete</div>
+                            <div className="cancel-delete-button" onClick={() => setShowDeleteModal(false)}>Cancel</div>
+                        </div>
+                    </div>
+                </Modal>
+            )}
+            <button className="editSongButton" onClick={() => setShowEditModal(true)}>Edit Song</button>
+            {showEditModal && (
+                <Modal editForm={true} onClose={() => setShowEditModal(false)}>
                     <form
                         className="editSongForm"
                         onSubmit={handleSubmit}

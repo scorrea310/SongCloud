@@ -46,7 +46,7 @@ const MySongs = () => {
 
     if (!songsLoaded) {
         return (
-            <div style={{ width: "57%", minHeight: "100vh" }}></div>
+            <div style={{ width: "1000px", minHeight: "100vh" }}></div>
         )
     };
 

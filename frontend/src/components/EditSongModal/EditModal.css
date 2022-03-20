@@ -120,3 +120,42 @@
   justify-content: flex-end;
   align-items: center;
 }
+
+.deleteSongModalMainContent {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /* background-color: aqua; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.areYouSureDeleteTextContainer {
+  width: 70%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.deleteAndCancelSongButtonContainer {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  justify-content: space-between;
+}
+
+.confirmDeleteSongbutton {
+  color: white;
+  background-color: red;
+  padding: 12px 20px;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+.cancel-delete-button {
+  color: white;
+  background-color: black;
+  padding: 12px 20px;
+  border-radius: 24px;
+  cursor: pointer;
+}
