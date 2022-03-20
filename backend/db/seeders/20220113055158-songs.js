@@ -21,9 +21,44 @@ module.exports = {
       {
         userId: 4,
         albumId: null,
+        url: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/Mr.+Rager.mp3",
+        title: "Mr. Rager",
+        imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/mrRagerCover.jpg"
+      },
+      {
+        userId: 4,
+        albumId: null,
+        url: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/The+Prayer.mp3",
+        title: "The Prayer",
+        imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/thePrayerCover.jpeg"
+      },
+      {
+        userId: 4,
+        albumId: null,
+        url: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/Kid+Cudi+ft.+Phoebe+Bridgers+-+Lovin%E2%80%99+Me+(Official+Visualizer).mp3",
+        title: "Lovin' Me",
+        imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/kidcudiCover.jpeg"
+      },
+      {
+        userId: 4,
+        albumId: null,
         url: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/Reborn.mp3",
         title: "Reborn",
         imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/Kanye-West-And-Kid-Cudi-Kids-See-Ghosts-album-cover-820-1000x600.jpeg"
+      },
+      {
+        userId: 5,
+        albumId: null,
+        url: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/Stronger.mp3",
+        title: "Stronger",
+        imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/graduation.jpeg"
+      },
+      {
+        userId: 5,
+        albumId: null,
+        url: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/Kanye+West+-+Welcome+To+Heartbreak+ft.+Kid+Cudi.mp3",
+        title: "Welcome to Heartbreak",
+        imageUrl: "https://songcloud-song-images.s3.us-west-1.amazonaws.com/graduation.jpeg"
       },
       {
         userId: 5,
