@@ -64,7 +64,7 @@ const SongCoverPlayPause = ({ song, songTitleAndArtistNamePresent, songTitlePres
             </>}
 
             {songTitlePresent && <>
-                <div className="songtitleSongCoverPlayPause">{song.title}</div>
+                <div className="songtitleSongCoverPlayPause black-text">{song.title}</div>
             </>}
 
         </div>

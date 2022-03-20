@@ -40,6 +40,11 @@
     color: white;
 }
 
+.songtitleSongCoverPlayPause.black-text {
+    margin-top: 15px;
+    color: black;
+}
+
 .songArtistSongCoverPlayPause {
     margin-top: 10px;
     color: white;
