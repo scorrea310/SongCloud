@@ -11,7 +11,7 @@
 
 .profile-dropdown{
     background-color:#fff;
-    width: 125px;
+    width: fit-content;
     height: 150px;
     border-radius: 3px;
     display: flex;
@@ -22,7 +22,10 @@
     margin-right: 100px;
     border: 1px solid #ccc;
     z-index: 300;
+    padding-left: 20px;
+    padding-right: 20px;
 }
+
 
 ul li {
     list-style-type: none;

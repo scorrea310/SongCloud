@@ -1,5 +1,5 @@
 .middleSection {
-    width: 80%;
+    width: 1000px;
     height: 550px;
     background-color: black;
     display: flex;
@@ -7,6 +7,7 @@
     margin-top: 50px;
     border-radius: 3px;
     justify-content: center;
+    margin-top: 80px;
 }
 
 .leftImageSection {
