@@ -66,11 +66,7 @@ export const createSong = (songInfo) => async (dispatch) => {
 
 
 export const updateSong = (songInfo) => async (dispatch) => {
-
-
-
     const { id, title, image, newSong } = songInfo
-
 
     const formData = new FormData();
 
@@ -80,7 +76,6 @@ export const updateSong = (songInfo) => async (dispatch) => {
         formData.append("image", image)
     } else {
         formData.append("files", image)
-
     }
 
     if (typeof newSong === "string") {

@@ -30,6 +30,8 @@ function EditSongFormModal({ song }) {
         if (isMounted) {
             setTitle(song.title)
             setImage(song.imageUrl)
+            setNewSong(song.url)
+            setUploadingInProgress(false)
         }
 
         return (() => {
@@ -97,7 +99,9 @@ function EditSongFormModal({ song }) {
             newSong
         }
 
-        await dispatch(updateSong(songInfo)).then(async (updatedSong) => {
+
+
+        dispatch(updateSong(songInfo)).then(async (updatedSong) => {
 
 
 
@@ -111,18 +115,12 @@ function EditSongFormModal({ song }) {
                     songImage: updatedSong.imageUrl,
                     songName: updatedSong.title
                 }
-                // setUploadingInProgress(false)
+
                 dispatch(setCurrentSong(newCurrentSong))
-                // setShowModal(false)
+
             }
-
-
-            // setUploadingInProgress(false)
-
-            // setShowModal(true)
+            setShowModal(false)
         })
-
-        // setShowModal(true)
 
     };
 
