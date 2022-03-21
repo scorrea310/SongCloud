@@ -32,7 +32,7 @@ const UpLoadSong = () => {
     )
 
     const toObjectURL = (file) => {
-        console.log("hjjjj")
+       
         if (file === null || file === undefined) return
         return URL.createObjectURL(file)
     };
@@ -68,7 +68,7 @@ const UpLoadSong = () => {
         let newErrors = [];
 
         if (!image) {
-            console.log("no image")
+            
             newErrors.push("you must submit a song cover.")
             setErrors(newErrors)
             return;
