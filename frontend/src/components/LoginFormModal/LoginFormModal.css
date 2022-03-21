@@ -33,5 +33,13 @@
 p {
    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif; 
    font-size: 18px;
+}
 
+.signUpErrorMessage {
+    color: red;
+    font-size: 12px;
+}
+
+.loginErrorsDivContainer {
+    height: 20px
 }

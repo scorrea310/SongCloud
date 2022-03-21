@@ -11,7 +11,7 @@
 
 #editButtonContainer {
     width: 95%;
-    height: 46px;
+    height: 35px;
     display: flex;
     justify-content: space-between;
 }

@@ -100,7 +100,7 @@ function EditSongFormModal({ song }) {
         dispatch(updateSong(songInfo)).then(async (updatedSong) => {
 
 
-
+            setShowEditModal(false)
             if (currentSongPlaying.songId === song.id) {
 
                 const newCurrentSong = {
@@ -111,7 +111,7 @@ function EditSongFormModal({ song }) {
                     songImage: updatedSong.imageUrl,
                     songName: updatedSong.title
                 }
-                setShowEditModal(false)
+
                 dispatch(setCurrentSong(newCurrentSong))
 
             }

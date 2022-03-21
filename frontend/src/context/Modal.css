@@ -27,6 +27,7 @@
   background-color:white;
   height: 400px;
   width: 400px;
+  flex-direction: column;
 }
 
 #edit-form-modal {
@@ -37,4 +38,5 @@
   background-color:white;
   height: 500px;
   width: 500px;
+  flex-direction: column;
 }

@@ -22,7 +22,7 @@ export function ModalProvider({ children }) {
     );
 }
 
-export function Modal({ onClose, children, editForm }) {
+export function Modal({ onClose, children, editForm, signupForm }) {
     const modalNode = useContext(EditModalContext);
     if (!modalNode) return null;
 
@@ -31,7 +31,7 @@ export function Modal({ onClose, children, editForm }) {
     return ReactDOM.createPortal(
         <div id="modal">
             <div id="modal-background" onClick={onClose} />
-            <div id={editForm ? "edit-form-modal" : "modal-content"}>
+            <div id={editForm || signupForm ? "edit-form-modal" : "modal-content"}>
                 {children}
             </div>
         </div>,

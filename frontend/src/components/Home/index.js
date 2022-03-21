@@ -21,11 +21,9 @@ const Home = () => {
 
     if (!isLoaded) {
         return (
-            <div style={{ width: "100vh", height: "1261px" }}></div>
+            <div style={{ width: "100%", height: "1110px" }}></div>
         )
     }
-
-    console.log(allSongObjects)
 
     return (
         <div className="allSongsMainContentBackground">

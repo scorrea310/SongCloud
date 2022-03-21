@@ -31,47 +31,52 @@ const SignupFormPage = () => {
 
 
     return (
+        <>
 
-        <form className="signUpForm" onSubmit={handleSubmit}>
-            <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
-            <p> Sign Up </p>
-            <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-                className="formItem"
-            />
-            <input
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="formItem"
-            />
-            <input
-                type="password"
-                placeholder="Your Password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="formItem"
-            />
-            <input
-                type="password"
-                placeholder="Confirm Password"
-                required
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="formItem"
-            />
-            <button className="formItem" id="signupButton" type="submit">Sign Up</button>
+            <div className="signupErrorsContainer">
+                {errors.map((error, idx) => <div className="signUpErrorMessage" key={idx}>{error}</div>)}
+                {errors.length <= 0 ? <h3>Welcome to SongCloud</h3> : null}
+            </div>
 
-        </form>
+            <form className="signUpForm" onSubmit={handleSubmit}>
+
+                <p> Sign Up </p>
+                <input
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                    className="formItem"
+                />
+                <input
+                    type="text"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="formItem"
+                />
+                <input
+                    type="password"
+                    placeholder="Your Password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="formItem"
+                />
+                <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    required
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className="formItem"
+                />
+                <button className="formItem" id="signupButton" type="submit">Sign Up</button>
+
+            </form>
+        </>
 
     )
 }

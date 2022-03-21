@@ -4,12 +4,13 @@
     /* background: linear-gradient(135deg, rgb(179, 130, 135) 0%, rgb(110, 136, 165) 100%); */
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 0px;
     border-bottom: 1px solid rgb(239, 239, 239);
     /* border-radius: 12px; */
     /* padding-right: 20px; */
     /* padding-left: 20px; */
     padding-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .artist-Name-Artist-Songs-Component {

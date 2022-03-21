@@ -5,10 +5,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 100px;
-    margin-top: 30px;
     padding-right: 20px;
     padding-left: 20px;
+    padding-top: 20px;
     }
 
 .selectArtistContainer {
@@ -96,8 +95,10 @@
 
 .allSongsMainContentBackground {
     width: 100%;
-    height: 100%;
+    height: fit-content;
     display: flex;
     justify-content: center;
     background-color: #f2f2f2;
+    padding-top: 46px;
+    padding-bottom: 50px;
 }
