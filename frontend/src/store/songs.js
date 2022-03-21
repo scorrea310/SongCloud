@@ -98,12 +98,9 @@ export const updateSong = (songInfo) => async (dispatch) => {
 
     data.artistName = data.User.username
 
-    console.log(data, "skdbvksdvbksdvbskdjvbksjd")
-
     dispatch(setSong(data))
 
     return data
-
 }
 
 
@@ -138,8 +135,6 @@ export const loadUsersSongs = (id) => async (dispatch) => {
         for (let i = 0; i < data.length; i++) {
             data[i].artistName = data[i].User.username
         }
-
-        console.log(data, "--------")
 
         dispatch(loadSongsAction(data, id))
 

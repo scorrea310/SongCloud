@@ -21,32 +21,6 @@
     color: black;
 }
 
-/* .rec.rec-arrow {
-    border-radius: 90%;
-    width: 10px;
-    height: 50px;
-    color: black;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-/* round buttons on hover */
-/* .rec.rec-arrow:hover {
-    border-radius: 60%;
-    background-color: #f50;
-    color: black
-} */
-/* .cGRqmx:hover:enabled, .cGRqmx:focus:enabled {
-    color: #fff;
-    background-color: #f50;
-    box-shadow: 0 0 2px 0 #333;
-} */
-
-.rec.rec-arrow:disabled {
-    visibility: hidden;
-}
-
 .kRvpeg {
     display: none;
 }

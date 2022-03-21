@@ -43,8 +43,6 @@ router.put("/:id", multipleMulterUpload("files"), asyncHandler(async (req, res) 
 
     const { title, image, newSong } = req.body;
 
-    console.log(req.body)
-
     const id = req.params.id
 
     let imageUrl;
