@@ -1,4 +1,4 @@
-.SongContainer {
+/* .SongContainer {
     width: 400px;
     height: 400px;
     background: linear-gradient(135deg, rgb(179, 130, 135) 0%, rgb(110, 136, 165) 100%);
@@ -7,11 +7,11 @@
     justify-content: space-between;
     margin-top: 46px;
     border-radius: 5px;
-}
+} */
 
 #editButtonContainer {
     width: 95%;
-    height: 46px;
+    height: fit-content;
     display: flex;
     justify-content: space-between;
 }

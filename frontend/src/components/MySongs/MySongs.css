@@ -1,8 +1,48 @@
 .songItemsContainer {
-    width: 57%;
+    width: 1000px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f2f2f2;;
+    background-color: white;
+    padding-top: 46px;
+    padding-bottom: 40px;
+    margin-top: 46px;
+}
+
+.noSongs {
+    width: 1000px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+.noSongsTextContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addASongButtonMySongs {
+    margin-top: 15px;
+    font-family: Interstate,Lucida Grande,Arial,sans-serif;
+    color: white;
+    width: 125px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 43px;
+    border-radius: 24px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.mySongsMainContentBackground {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #f2f2f2;
 }

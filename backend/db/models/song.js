@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
 
 
 
-  Song.updateSong = async function ({ id, url, title, imageUrl }) {
+  Song.updateSong = async function ({ id, url, title, imageUrl, User }) {
 
     const song = await Song.findByPk(id)
 
@@ -59,8 +59,15 @@ module.exports = (sequelize, DataTypes) => {
 
     const finalUpdatedSong = await updatedSong.save()
 
-
-    return finalUpdatedSong.dataValues
+    const songWithArtistName = await Song.findOne({
+      where: {
+        id,
+      },
+      include: {
+        model: User,
+      }
+    })
+    return songWithArtistName
   }
 
 
@@ -79,13 +86,15 @@ module.exports = (sequelize, DataTypes) => {
 
 
 
-  Song.getUsersSongs = async function (idOfUser) {
+  Song.getUsersSongs = async function (idOfUser, User) {
 
-   
     return Song.findAll({
       where: {
         userId: idOfUser,
-      }
+      },
+      include: [{
+        model: User
+      }]
     })
   }
 

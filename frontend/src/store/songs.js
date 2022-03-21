@@ -66,11 +66,7 @@ export const createSong = (songInfo) => async (dispatch) => {
 
 
 export const updateSong = (songInfo) => async (dispatch) => {
-
-
-
     const { id, title, image, newSong } = songInfo
-
 
     const formData = new FormData();
 
@@ -80,7 +76,6 @@ export const updateSong = (songInfo) => async (dispatch) => {
         formData.append("image", image)
     } else {
         formData.append("files", image)
-
     }
 
     if (typeof newSong === "string") {
@@ -101,6 +96,9 @@ export const updateSong = (songInfo) => async (dispatch) => {
 
     const data = await res.json()
 
+    data.artistName = data.User.username
+
+    console.log(data, "skdbvksdvbksdvbskdjvbksjd")
 
     dispatch(setSong(data))
 
@@ -137,7 +135,11 @@ export const loadUsersSongs = (id) => async (dispatch) => {
 
         const data = await res.json()
 
+        for (let i = 0; i < data.length; i++) {
+            data[i].artistName = data[i].User.username
+        }
 
+        console.log(data, "--------")
 
         dispatch(loadSongsAction(data, id))
 
@@ -147,8 +149,6 @@ export const loadUsersSongs = (id) => async (dispatch) => {
 
 }
 /*--------------------------------------------------------------------*/
-
-
 
 const initialState = {
 

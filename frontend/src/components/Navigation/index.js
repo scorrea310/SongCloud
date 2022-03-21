@@ -7,7 +7,7 @@ import './Navigation.css';
 import HomePage from '../HomePage';
 import LandingNavSection from '../LandingPage/LandingNavSection';
 import LandingPage from '../LandingPage';
-
+import AudioPlayer from '../AudioPlayer';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);

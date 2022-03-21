@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { pauseSong } from "../../store/currentSong"
 import { playSong } from "../../store/currentSong"
+import { useCallback } from 'react'
 
 const AudioPlayer = () => {
 
@@ -16,15 +17,11 @@ const AudioPlayer = () => {
 
     let currentSongToPlay = useSelector(state => state.currentSong);
 
-
     // states
     // const [isPlaying, setIsPlaying] = useState(false)
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0)
     const [volume, setVolume] = useState(1.0)
-
-
-
     //references 
     const audioPlayer = useRef()
     const progressBar = useRef() //reference to progress bar 
@@ -45,48 +42,40 @@ const AudioPlayer = () => {
 
 
 
-    const whilePlaying = () => {
-        progressBar.current.value = audioPlayer.current.currentTime;
-        progressBar.current.style.setProperty("--seek-before-width", `${progressBar.current.value / duration * 100}%`)
-        setCurrentTime(progressBar.current.value)
-        animationRef.current = requestAnimationFrame(whilePlaying)
-    }
+    const whilePlaying = useCallback(() => {
+        if (currentSongToPlay.isPlayingSong === false) return
 
-
-
-    let isPlaying;
-    if (currentSongToPlay.isPlayingSong) {
-        isPlaying = true
-        audioPlayer.current.play()
-        animationRef.current = requestAnimationFrame(whilePlaying)
-    } else if (currentSongToPlay.isPlayingSong === false) {
-        isPlaying = false
-        audioPlayer.current.pause()
-        cancelAnimationFrame(animationRef.current)
-    }
-
+        if (currentSongToPlay.isPlayingSong === true) {
+            progressBar.current.value = audioPlayer?.current?.currentTime;
+            progressBar.current.style.setProperty("--seek-before-width", `${progressBar.current.value / duration * 100}%`)
+            setCurrentTime(progressBar.current.value)
+            animationRef.current = requestAnimationFrame(whilePlaying)
+        }
+    }, [currentSongToPlay.isPlayingSong, duration])
 
 
 
     const togglePausePlay = () => {
-        const prevValue = isPlaying
-
+        const prevValue = currentSongToPlay.isPlayingSong
 
         if (prevValue) {
             dispatch(pauseSong())
-        } else {
+        } else if (!prevValue) {
             dispatch(playSong(currentSongToPlay))
         }
+    }
 
+    useEffect(() => {
 
-        if (!prevValue) {
-            audioPlayer.current.play()
-            animationRef.current = requestAnimationFrame(whilePlaying)
-        } else {
+        if (currentSongToPlay.isPlayingSong === null || currentSongToPlay.isPlayingSong === false) {
             audioPlayer.current.pause()
             cancelAnimationFrame(animationRef.current)
+        } else {
+            audioPlayer.current.play()
+            animationRef.current = requestAnimationFrame(whilePlaying)
         }
-    }
+
+    }, [currentSongToPlay.isPlayingSong, whilePlaying])
 
 
 
@@ -114,6 +103,8 @@ const AudioPlayer = () => {
         audioPlayer.current.volume = volumeBar.current.value / 100
     }
 
+    // console.log(currentSongToPlay)
+
     return (
         <div className="audioPlayer">
             <div className="centerAudioControls">
@@ -129,7 +120,7 @@ const AudioPlayer = () => {
                     }}></audio>
 
                 <button className="forwardBackward" onClick={backThirty}> <BsArrowLeftShort /> 30</button>
-                <button className="playPause" onClick={togglePausePlay}> {isPlaying ? <FaPause /> : <FaPlay className="playButton" />}</button>
+                <button className="playPause" onClick={togglePausePlay}> {currentSongToPlay.isPlayingSong ? <FaPause /> : <FaPlay className="playButton" />}</button>
                 <button className="forwardBackward" onClick={forwardThirty} > 30 <BsArrowRightShort /> </button>
 
                 <div className="currentTime">{calculateTime(currentTime)}</div>
@@ -160,8 +151,8 @@ const AudioPlayer = () => {
                     </div>
                 </div>
                 <div className="audioPlayerSongArtistAndName">
-                    <div>{currentSongToPlay.artistName}</div>
-                    <div> {currentSongToPlay.songName}</div>
+                    <div className="artistNameTextAudioPlayer">{currentSongToPlay.artistName}</div>
+                    <div className="songNameTextAudioPlayer"> {currentSongToPlay.songName}</div>
                 </div>
             </div>
         </div >

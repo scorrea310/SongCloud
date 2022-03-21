@@ -1,10 +1,23 @@
 import "./PlaySong.css"
 import EditSongFormModal from '../EditSongModal'
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
+import SongCoverPlayPause from "../SongCoverPlayPause"
 
 const PlaySong = ({ song }) => {
 
-    // const [isSong, setIsSong] = useState(false)
+    const isMounted = useRef(true)
+    // const [songState, setSongState] = useState(song)
+
+    useEffect(() => {
+
+        if (isMounted) {
+            // setSongState(song)
+        }
+
+        return (() => {
+            isMounted.current = false
+        })
+    }, [song])
 
     let songItem;
 
@@ -16,10 +29,8 @@ const PlaySong = ({ song }) => {
                 </div>
                 <div className='songTitle'> {song.title}</div>
                 <div className='songImage'>
-                    <img className='songImagePic' src={`${song.imageUrl}`}></img>
-                </div>
-                <div className='audioContainer'>
-                    <audio src={`${song.url}`} preload="auto" controls className='audioElement'></audio>
+                    {/* <img alt="song cover" className='songImagePic' src={`${song.imageUrl}`}></img> */}
+                    <SongCoverPlayPause song={song} />
                 </div>
             </div>
         )

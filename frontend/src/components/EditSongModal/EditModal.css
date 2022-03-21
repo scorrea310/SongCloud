@@ -29,37 +29,37 @@
   width: 400px;
 }
 .deleteSongButton {
-    width: 60px;
+    width: 45.848px;
     background: none;
     border: 1px solid black;
     border-radius: 3px;
     color: black;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-    font-size: 13px;
+    font-size: 10px;
     cursor: pointer;
     text-decoration: none;
     margin-left: 15px;
     margin-right: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
     margin-top: 10px;
     height: 25px;
 }
 
 .editSongButton { 
-    width: 70px;
+    width: fit-content;
     background: none;
     border: 1px solid black;
     border-radius: 3px;
     color: black;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-    font-size: 13px;
+    font-size: 10px;
     cursor: pointer;
     text-decoration: none;
     margin-left: 15px;
     margin-right: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
     margin-top: 10px;
     height: 25px;
 }
@@ -86,12 +86,76 @@
   height: 46px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .editSongAndTitleContainer {
-   display: flex;
+    display: flex;
     flex-direction: column;
-    height: 60%;
+    height: 30%;
     justify-content:space-evenly;
     width: 200px
+}
+
+.editSongUploadButton {
+    text-decoration: none;
+    border: none;
+    background-color: #f50;
+    width:300px;
+    height: 40px;
+    color: white;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.uploadEditSongButtonContainer {
+  width: fit-content;
+  height: 120px;
+  display: flex;
+  /* background-color: aquamarine; */
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.deleteSongModalMainContent {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /* background-color: aqua; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.areYouSureDeleteTextContainer {
+  width: 70%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.deleteAndCancelSongButtonContainer {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  justify-content: space-between;
+}
+
+.confirmDeleteSongbutton {
+  color: white;
+  background-color: red;
+  padding: 12px 20px;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+.cancel-delete-button {
+  color: white;
+  background-color: black;
+  padding: 12px 20px;
+  border-radius: 24px;
+  cursor: pointer;
 }

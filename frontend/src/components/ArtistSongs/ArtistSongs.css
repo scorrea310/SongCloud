@@ -1,0 +1,57 @@
+.artistSongsComponentContainer {
+    width: 100%;
+    height: fit-content;
+    /* background: linear-gradient(135deg, rgb(179, 130, 135) 0%, rgb(110, 136, 165) 100%); */
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+    border-bottom: 1px solid rgb(239, 239, 239);
+    /* border-radius: 12px; */
+    /* padding-right: 20px; */
+    /* padding-left: 20px; */
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.artist-Name-Artist-Songs-Component {
+    margin-bottom: 20px;
+    margin-left: 100px;
+    font-size: 20px;
+    margin-top: 20px;
+    color: black;
+}
+
+/* .rec.rec-arrow {
+    border-radius: 90%;
+    width: 10px;
+    height: 50px;
+    color: black;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+/* round buttons on hover */
+/* .rec.rec-arrow:hover {
+    border-radius: 60%;
+    background-color: #f50;
+    color: black
+} */
+/* .cGRqmx:hover:enabled, .cGRqmx:focus:enabled {
+    color: #fff;
+    background-color: #f50;
+    box-shadow: 0 0 2px 0 #333;
+} */
+
+.rec.rec-arrow:disabled {
+    visibility: hidden;
+}
+
+.kRvpeg {
+    display: none;
+}
+
+.dvCrDz {
+    width: 30px;
+    height: 30px
+}

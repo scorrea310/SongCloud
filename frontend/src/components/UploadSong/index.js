@@ -4,29 +4,58 @@ import { useDispatch, useSelector } from "react-redux";
 import { createSong } from "../../store/songs";
 import { allSongsDelete } from "../../store/songs";
 import { useHistory } from "react-router-dom";
+import ImageInputWithPreview from "../ImageInputWithPreview";
+import { Bars } from 'react-loader-spinner'
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const UpLoadSong = () => {
 
     const history = useHistory()
 
-    const [title, setTitle] = useState("");
-    const [image, setImage] = useState(null)
+
+    const [image, setImage] = useState(false)
     const [song, setSong] = useState(null)
     const [errors, setErrors] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
-
+    const [title, setTitle] = useState("");
+    const [src, setSrc] = useState(null)
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
 
     let userId = user.id
 
-    let loadingIconAndText = (
+    const loadingIconAndText = (
         <>
             <div>Loading...</div>
             <div className="loading"></div>
         </>
     )
 
+    const toObjectURL = (file) => {
+        console.log("hjjjj")
+        if (file === null || file === undefined) return
+        return URL.createObjectURL(file)
+    };
+
+    const updateImages = (e) => {
+        e.stopPropagation()
+
+
+
+        if (e.target.files[0] === undefined || e.target.files[0] === null) return
+
+        setImage(e.target.files[0])
+        setSrc(toObjectURL(e.target.files[0]))
+        e.target.value = ''
+
+    };
+
+    const handleDelete = (e, i) => {
+        e.stopPropagation()
+        e.preventDefault()
+        setImage(false);
+        setSrc(null)
+    };
 
     const handleSubmit = async (e) => {
 
@@ -37,6 +66,13 @@ const UpLoadSong = () => {
         e.preventDefault();
 
         let newErrors = [];
+
+        if (!image) {
+            console.log("no image")
+            newErrors.push("you must submit a song cover.")
+            setErrors(newErrors)
+            return;
+        }
 
         if (imageTypes.test(image.name) === false) {
 
@@ -62,7 +98,7 @@ const UpLoadSong = () => {
                 song,
             }
             setTitle("")
-            setImage(null)
+            setImage(false)
             setSong(null)
 
             let newSong = await dispatch(createSong(songInfo))
@@ -84,11 +120,6 @@ const UpLoadSong = () => {
 
     };
 
-    const addImage = (e) => {
-        const file = e.target.files[0];
-        if (file) setImage(file);
-    }
-
     const addSong = (e) => {
         const file = e.target.files[0];
         if (file) setSong(file);
@@ -98,6 +129,13 @@ const UpLoadSong = () => {
         <div className="errorsDiv"> {errors.map((error) => <div className="errorLi" key={error}>{error}<br></br></div>)} </div>
     )
 
+    const changeTitle = (e) => {
+        e.stopPropagation()
+        setTitle(e.target.value)
+
+
+    }
+
     return (
         <div className="middleSection">
             <div className="leftImageSection">
@@ -106,29 +144,43 @@ const UpLoadSong = () => {
             <div className="formSection">
 
                 <div className="formContainer">
-                    {errors.length > 0 &&
-                        errorsDivAndElements}
+
                     <div className="uploadText">Upload a Song</div>
+
+
                     <form
                         className="uploadSongForm"
                         onSubmit={handleSubmit}
                     >
-                        <div className="imageBox">
-                            <span>Image</span>
-                            <input className="imageInput" type="file" onChange={addImage} required />
+                        <div className="songCoverAndTitleParentContainer">
+                            <div>
+                                <ImageInputWithPreview
+                                    index={0}
+                                    src={src}
+                                    onChange={updateImages}
+                                    onClick={handleDelete}
+                                />
+                            </div>
+                            <div className="songTitleAndSongFileContainer">
+                                <div className="titleInputContainerUploadSong">
+                                    <div className="titleTextContainerUploadSong"><label id="title">Title </label></div>
+                                    <input required value={title} className="titleInput" type="text" onChange={changeTitle} />
+                                </div>
+                                <div className="songAndTitleContainer">
+                                    <label className="songFileLabel">Song file:</label>
+                                    <input required className="songInput" type="file" accept=".mp3,.mp4" onChange={addSong} />
+
+                                </div>
+                            </div>
                         </div>
-                        <div className="songAndTitleContainer">
-                            <label id="title">Title
-                                <input required value={title} className="titleInput" type="text" onChange={(e) => setTitle(e.target.value)} />
-                            </label>
-                            <label>Song file:
-                                <input required className="songInput" type="file" onChange={addSong} />
-                            </label>
-                        </div>
+
+
                         <div className="uploadButtonAndLoadingIcon">
-                            {isLoaded ? loadingIconAndText : null}
-                            <button id="uploadSongButton" type="submit">Upload Song</button>
+                            {isLoaded ? <div style={{ marginLeft: "0px" }}><Bars color="#f50" height={50} width={50} /></div> : null}
+                            <button id="uploadSongButton" type="submit">upload song</button>
                         </div>
+                        {errors.length > 0 &&
+                            errorsDivAndElements}
                     </form>
                 </div>
             </div>
