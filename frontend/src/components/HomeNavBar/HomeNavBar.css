@@ -4,18 +4,22 @@
     background-color: #333;
     display: flex;
     justify-content: center;
+    z-index: 900;
+    position: fixed;
 }
 
 .middleSectionNav{
     width: 60%;
+    min-width: 1000px;
     height: 46px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    margin: auto;
+    /* justify-content: space-between; */
 }
 
 #navIcon {
-    width: 69px;
+    width: 80px;
     height: 46px;
     display: flex;
     justify-content: center;
@@ -87,18 +91,24 @@
 }
 
 .rightSection {
-    width: 200px;
+    width: 260px;
+    /* background-color: aqua; */
     display: flex;
     flex-direction: row;
+    border-right: 1px solid black;
 }
 
 #songCloud {
     display: flex;
     align-items: center;
+    justify-content: center;
     color: #fff;
     font-family: Interstate,Lucida Grande,Arial,sans-serif;
     font-weight: 100;
     font-size: 15px;
+    width: 44%;
+    flex-shrink: 0;
+    margin: auto;
 }
 
 .homeButtomLink {

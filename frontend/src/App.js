@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import UpLoadSong from "./components/UploadSong";
 import MySongs from "./components/MySongs";
 import Home from "./components/Home";
-
+import AudioPlayer from "./components/AudioPlayer";
 
 function App() {
 
@@ -32,6 +32,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <AudioPlayer />
       {isLoaded && sessionLinks && (
         <Switch>
           <Route exact path="/">
@@ -44,7 +45,9 @@ function App() {
             <UpLoadSong />
           </Route>
         </Switch>
+
       )}
+
     </>
   );
 }

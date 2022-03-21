@@ -15,3 +15,8 @@
     border-color: rgb(255, 85, 0);
     border-style: none;
 }
+
+.signupErrorsContainer {
+    height: 30px;
+    margin-bottom: 20px;
+}

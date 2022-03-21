@@ -1,6 +1,7 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
 const { Song } = require('../../db/models');
+const { User } = require('../../db/models')
 const { multipleMulterUpload, singlePublicFileUpload } = require("../../awsS3")
 
 const { check } = require('express-validator');
@@ -42,6 +43,8 @@ router.put("/:id", multipleMulterUpload("files"), asyncHandler(async (req, res) 
 
     const { title, image, newSong } = req.body;
 
+    console.log(req.body)
+
     const id = req.params.id
 
     let imageUrl;
@@ -66,7 +69,7 @@ router.put("/:id", multipleMulterUpload("files"), asyncHandler(async (req, res) 
     }
 
 
-    const song = await Song.updateSong({ id: +id, url, title, imageUrl });
+    const song = await Song.updateSong({ id: +id, url, title, imageUrl, User });
 
     return res.json(song);
 
@@ -91,23 +94,49 @@ router.delete("/:id", asyncHandler(async (req, res) => {
 }))
 
 
-
 router.get("/:id", asyncHandler(async (req, res) => {
 
     const { id } = req.params
 
-    
+
 
     const idOfUser = +id
 
 
 
-    const songs = await Song.getUsersSongs(idOfUser)
+    const songs = await Song.getUsersSongs(idOfUser, User)
 
-    
 
     return res.json(songs);
 
+}))
+
+router.get("", asyncHandler(async (req, res) => {
+    /*
+    GET /api/songs (GETS all Songs)
+    */
+    let songsByArtistname = {};
+
+    let allSongs = await Song.findAll({
+        include: {
+            model: User
+        }
+    });
+
+    for (let i = 0; i < allSongs.length; i++) {
+
+        if (songsByArtistname[allSongs[i].userId] !== undefined) {
+            songsByArtistname[allSongs[i].userId].songs.push(allSongs[i])
+        } else {
+            songsByArtistname[allSongs[i].userId] = {
+                artistName: allSongs[i].User.username,
+                songs: [allSongs[i]]
+            }
+        }
+
+    }
+
+    return res.json(songsByArtistname)
 }))
 
 
