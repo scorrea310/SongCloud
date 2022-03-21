@@ -103,8 +103,6 @@ const AudioPlayer = () => {
         audioPlayer.current.volume = volumeBar.current.value / 100
     }
 
-    // console.log(currentSongToPlay)
-
     return (
         <div className="audioPlayer">
             <div className="centerAudioControls">
