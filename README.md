@@ -6,6 +6,26 @@ Visit Live Site: https://song-cloud-clone.herokuapp.com/
 
 
 
+# Walkthrough 
+
+Landing Page
+
+<img width="1425" alt="Screen Shot 2022-03-21 at 10 25 31 AM" src="https://user-images.githubusercontent.com/46228676/159329720-a2e7ee29-25cf-47a5-b1c1-eefeaa31bbce.png">
+
+Users can sign, login, or use Demo User
+<img width="1425" alt="Screen Shot 2022-03-21 at 10 25 59 AM" src="https://user-images.githubusercontent.com/46228676/159329785-29a04b24-c0a3-4485-b715-47e52955e18e.png">
+
+Users are directed to home page when logged in. Users can see their own songs as well as discover other sounds.
+<img width="1426" alt="Screen Shot 2022-03-21 at 10 26 30 AM" src="https://user-images.githubusercontent.com/46228676/159329880-d5ef39cf-6e3f-46d3-ab31-e316cce013d4.png">
+
+Users can upload a song with a cover image here.
+<img width="1428" alt="Screen Shot 2022-03-21 at 10 27 20 AM" src="https://user-images.githubusercontent.com/46228676/159330022-608ff356-da91-475d-adf6-e70339e5b932.png">
+
+Users can edit their own songs or delete in the my Songs tab.
+<img width="1426" alt="Screen Shot 2022-03-21 at 10 28 34 AM" src="https://user-images.githubusercontent.com/46228676/159330256-cfbc4006-6b37-4269-a613-1a538bcf5ec6.png">
+
+
+
 # Getting Started
 
 1. Clone this repo.
